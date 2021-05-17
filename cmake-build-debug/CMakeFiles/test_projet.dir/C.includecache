@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/coco/CLionProjects/test_projet/PuissanceN.c
+PuissanceN.h
+C:/Users/coco/CLionProjects/test_projet/PuissanceN.h
+stdio.h
+-
+math.h
+-
+stdlib.h
+-
+ctype.h
+-
+stdbool.h
+-
+string.h
+-
+
+C:/Users/coco/CLionProjects/test_projet/PuissanceN.h
+
