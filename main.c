@@ -8,6 +8,8 @@
 
 int main() {
 
+    // salut la team
+
     Grid grille;
     int winner;
     char start;
