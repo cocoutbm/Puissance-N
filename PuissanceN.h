@@ -61,7 +61,7 @@ int add_token(Grid grille, int c, char jetons);
  * @param c la colonne choisie par le joueur
  * @return si la suppression est possible
  */
-int remove_token(Grid grille, int c, int taille);
+int remove_token(Grid grille, int c, int size);
 
 /**
  * Vérifie si un des deux joueurs à gagné
@@ -69,6 +69,16 @@ int remove_token(Grid grille, int c, int taille);
  * @return 0 si joueur1 gagne, 1 si joueur2 gagne, -1 si aucun n'a gagné
  */
 int check_winner(Grid grille, int alignement_gagnant);
+
+/**
+ * Faire jouer les joueurs chacun leur tour
+ * @param grille la grille
+ * @param jeton le type de jeton
+ * @param c  la colonne
+ * @param size
+ * @param winner le gagnant
+ */
+void play(Grid grille, char jeton, int c, int size, int winner);
 
 void IA(Grid grille, int winner, int size, char jetons);
 

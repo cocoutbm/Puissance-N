@@ -2,7 +2,7 @@
 // Created by coco on 06/05/2021.
 //
 
-#include "puissance N.h"
+#include "puissanceN.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -112,12 +112,12 @@ int add_token(Grid grille, int c, char jetons){
     return insertion;
 }
 
-int remove_token(Grid grille, int c, int taille){
-    int l=taille-1;
+int remove_token(Grid grille, int c, int size){
+    int l = size;
     int suppression = 0;
 
     // boucle afin de trouver la premiere case pleine de la colonne
-    while(grille.tableau [l][c] == '_' && l >= 0){
+    while(l >= 0 && grille.tableau [l][c] == '_'){
         l--;
     }
     // Remplacement de la case pleine par une case vide
@@ -127,7 +127,7 @@ int remove_token(Grid grille, int c, int taille){
     }
     else{
         suppression = 0;
-        printf("ERREUR, colonne vide");
+        printf("ERREUR, colonne vide \n");
     }
 
     return suppression;
@@ -142,11 +142,11 @@ int check_winner(Grid grille, int alignement_gagant)
     int indice_c, indice_l;
     int jetons_alignes = 1;
 
-    // Parcours de la grille verticalement
+    // Parcours de la grille horizonatlement tant qu'il n'y a pas de gagnant et que nous somme pas au bout de la grille
     do {
 
         l = 0;
-        // Parcours de la grille horizontalement
+        // Parcours de la grille verticalement tant qu'il n'y a pas de gagnant, que nous somme pas au bout de la grille
         while (alignement != true && l < grille.hauteur && grille.tableau[l][c] != '_'){
 
             indice_c = c;
@@ -159,6 +159,7 @@ int check_winner(Grid grille, int alignement_gagant)
                     jetons_alignes++;
                     indice_c++;
                 } else {
+                    jetons_alignes = 1;
                     alignement = false;
                 }
             } while (alignement != false && jetons_alignes != alignement_gagant && c < (grille.largeur - alignement_gagant));
@@ -174,6 +175,7 @@ int check_winner(Grid grille, int alignement_gagant)
                         indice_l++;
                         alignement = true;
                     } else {
+                        jetons_alignes = 1;
                         alignement = false;
                     }
                 } while (alignement != false && jetons_alignes != alignement_gagant && c <= grille.largeur - alignement_gagant);
@@ -187,6 +189,7 @@ int check_winner(Grid grille, int alignement_gagant)
                         jetons_alignes++;
                         alignement = true;
                     } else {
+                        jetons_alignes = 1;
                         alignement = false;
                     }
                 } while (alignement != false && jetons_alignes != alignement_gagant && l < grille.hauteur - alignement_gagant);
@@ -201,6 +204,7 @@ int check_winner(Grid grille, int alignement_gagant)
                         jetons_alignes++;
                         alignement = true;
                     } else {
+                        jetons_alignes = 1;
                         alignement = false;
                     }
                 } while (alignement != false && jetons_alignes != alignement_gagant && l < grille.hauteur - alignement_gagant);
@@ -226,26 +230,90 @@ int check_winner(Grid grille, int alignement_gagant)
     return gagnant;
 }
 
-void IA(Grid grille, int winner, int size, char jetons)
+void play(Grid grille, char jeton, int c, int size, int winner)
 {
-    int c;
+    int nb_jetons = 0;
+    char choix;
 
-    jetons = 'X';
+    // Boucle qui fait jouer les joueurs chacun leur tour
+    do{
+        // Connaître le joueur qui doit jouer
+        // Quand nb_jetons est pair alors c'est au joueur 1 de jouer
+        // Quand nb_jetons est impair alors c'est au joueur 2 de jouer
+        if(nb_jetons % 2 == 0) {
+            jeton = 'O';
+            printf("C'est au joueur 1 de jouer \n");
+        } else {
+            jeton = 'X';
+            printf("C'est au joueur 2 de jouer \n");
+        }
 
-    while (winner = -1 && c < grille.largeur)
-    {
-        remove_token(grille, c, size +2);
-        add_token(grille, c, jetons);
-        check_winner(grille, size);
+        // Demande à l'utilisateur le choix qu'il souhaite faire
+        do {
+            printf("Rentrer A si vous vouler ajouter un jeton et R si vous voulez retirer un jeton : \n");
+            scanf(" %c", &choix);
+            choix = toupper(choix);
+        } while (choix != 'A' && choix != 'R');
+
+        // En fonction du choix fait, lancer la bonne fonction (add_token ou remove_token)
+        if(choix == 'R')
+        {
+            if(nb_jetons != 0){
+                do {
+                    printf("Dans quelle colonne voulez vous retirer un jeton ?\n");
+                    scanf("%d", &c);
+                } while (c <= 0 || c > grille.largeur);
+                remove_token(grille, c-1, size+1);
+                nb_jetons--;
+            }
+            else{
+                printf("ERREUR, grille vide\n");
+            }
+        } else if (choix == 'A'){
+            do {
+                printf("Dans quelle colonne voulez vous ajouter un jeton ?\n");
+                scanf("%d", &c);
+            } while (c <= 0 || c > grille.largeur);
+            add_token(grille, c-1, jeton);
+            nb_jetons++;
+        }
+
+        show_grid(grille);
+        winner = check_winner(grille,size);
+
+        printf("\n");
+
+    } while(winner == -1 && nb_jetons < (grille.largeur * grille.hauteur));
+
+    if (winner == 0){
+        printf("Le joeur 1 a gagne");
+    } else if (winner == 1) {
+        printf("Le joeur 2 a gagne");
+    } else {
+        printf("Match nul");
     }
-
-    jetons = 'O';
-
-    while (winner = -1 && c < grille.largeur)
-    {
-        remove_token(grille, c, size +2);
-        add_token(grille, c, jetons);
-        check_winner(grille, size);
-    }
-
 }
+
+//void IA(Grid grille, int winner, int size, char jetons)
+//{
+//    int c;
+//
+//    jetons = 'X';
+//
+//    while (winner = -1 && c < grille.largeur)
+//    {
+//        remove_token(grille, c, size +2);
+//        add_token(grille, c, jetons);
+//        check_winner(grille, size);
+//    }
+//
+//    jetons = 'O';
+//
+//    while (winner = -1 && c < grille.largeur)
+//    {
+//        remove_token(grille, c, size +2);
+//        add_token(grille, c, jetons);
+//        check_winner(grille, size);
+//    }
+//
+//}
