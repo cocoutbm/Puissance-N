@@ -7,7 +7,7 @@
 
 
 int main() {
-    
+
 
     Grid grille;
     int winner;
@@ -42,8 +42,7 @@ int main() {
 
     //Affichage de la grille initialisée
     show_grid(grille);
-
-    winner = check_winner(grille, size);
+    
 
 
 do{
@@ -67,7 +66,7 @@ do{
             else{
                 printf("ERREUR, grille vide\n");
             }
-        } else {
+        } else if (choix == 0){
             printf("Dans quelle colonne voulez vous ajouter un jeton ?\n");
             scanf("%d",&c);
             add_token(grille, c-1, jeton);
@@ -96,7 +95,7 @@ do{
             else{
                 printf("ERREUR, grille vide\n");
             }
-        } else {
+        } else if (choix == 0){
             printf("Dans quelle colonne voulez vous ajouter un jeton ?\n");
             scanf("%d",&c);
             add_token(grille, c-1, jeton);
