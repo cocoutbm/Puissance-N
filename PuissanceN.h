@@ -61,7 +61,7 @@ int add_token(Grid grille, int c, char jetons);
  * @param c la colonne choisie par le joueur
  * @return si la suppression est possible
  */
-int remove_token(Grid grille, int c);
+int remove_token(Grid grille, int c, int taille);
 
 /**
  * Vérifie si un des deux joueurs à gagné
@@ -71,6 +71,7 @@ int remove_token(Grid grille, int c);
 int check_winner(Grid grille, int alignement_gagnant);
 
 void IA(Grid grille, int winner, int size, char jetons);
+
 
 
 #endif //TEST_PROJET_PUISSANCEN_H
