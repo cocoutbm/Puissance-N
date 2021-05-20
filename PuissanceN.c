@@ -2,7 +2,7 @@
 // Created by coco on 06/05/2021.
 //
 
-#include "PuissanceN.h"
+#include "puissance N.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -92,7 +92,7 @@ void show_grid(Grid grille)
 }
 
 int add_token(Grid grille, int c, char jetons){
-    int l;
+    int l=0;
     int insertion = 0;
 
     // boucle afin de trouver la premiere case vide de la colonne
@@ -112,16 +112,16 @@ int add_token(Grid grille, int c, char jetons){
     return insertion;
 }
 
-int remove_token(Grid grille, int c){
-    int l;
+int remove_token(Grid grille, int c, int taille){
+    int l=taille-1;
     int suppression = 0;
 
     // boucle afin de trouver la premiere case pleine de la colonne
-    while(grille.tableau [l][c] = '_' && l > 0){
+    while(grille.tableau [l][c] == '_' && l >= 0){
         l--;
     }
     // Remplacement de la case pleine par une case vide
-    if(l > 0){
+    if(l >= 0){
         grille.tableau[l][c] = '_';
         suppression = 1;
     }
@@ -154,14 +154,14 @@ int check_winner(Grid grille, int alignement_gagant)
 
             // Vérification d'un éventuel alignement gagnant horizontalement
             do{
-                if(grille.tableau[l][c] != '_' && grille.tableau[l][c] == grille.tableau[l][indice_c + 1]) {
+                if(grille.tableau[l][c] != '_' && (grille.tableau[l][c] == grille.tableau[l][indice_c + 1])) {
                     alignement = true;
                     jetons_alignes++;
                     indice_c++;
                 } else {
                     alignement = false;
                 }
-            } while (alignement != false && jetons_alignes != alignement_gagant && c < grille.largeur - alignement_gagant);
+            } while (alignement != false && jetons_alignes != alignement_gagant && c < (grille.largeur - alignement_gagant));
 
 
             if (alignement == false)
@@ -234,7 +234,7 @@ void IA(Grid grille, int winner, int size, char jetons)
 
     while (winner = -1 && c < grille.largeur)
     {
-        remove_token(grille, c);
+        remove_token(grille, c, size +2);
         add_token(grille, c, jetons);
         check_winner(grille, size);
     }
@@ -243,10 +243,9 @@ void IA(Grid grille, int winner, int size, char jetons)
 
     while (winner = -1 && c < grille.largeur)
     {
-        remove_token(grille, c);
+        remove_token(grille, c, size +2);
         add_token(grille, c, jetons);
         check_winner(grille, size);
     }
-
 
 }
