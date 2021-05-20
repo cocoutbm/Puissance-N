@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include "PuissanceN.h"
+#include "puissance N.h"
 
 
 int main() {
@@ -15,10 +15,11 @@ int main() {
     char start;
     int player;
     int size;
-    int ajout_jeton;
-    int colonne;
     char jeton;
-    int enleve_jeton;
+    int nb_jetons=0;
+    int choix;
+    int c;
+
 
     printf("\n=============PUISSANCE N============= \n\n");
 
@@ -43,18 +44,68 @@ int main() {
     //Affichage de la grille initialisée
     show_grid(grille);
 
-    // Ajout d'un jeton 'O' ou 'X'
-    ajout_jeton = add_token(grille, colonne,  jeton);
-
-    enleve_jeton = remove_token(grille, colonne);
+    winner = check_winner(grille, size);
 
 
+do{
+    if(nb_jetons % 2 == 0)
+    {
+        jeton = 'O';
 
-//    winner = check_winner(grille, size);
+        printf("C'est au joueur 1 de jouer \n");
 
-//    printf("\n");
-//
-//    printf("%d", winner);
+        printf("Rentrer 0 si vous vouler ajouter un jeton et 1 si vous voulez retirer un jeton : \n");
+        scanf("%d", &choix);
+
+        if(choix == 1)
+        {
+            if(nb_jetons != 0){
+                printf("Dans quelle colonne voulez vous enlever un jeton ?\n");
+                scanf("%d",&c);
+                remove_token(grille, c-1, size+2);
+                nb_jetons--;
+            }
+            else{
+                printf("ERREUR, grille vide\n");
+            }
+        } else {
+            printf("Dans quelle colonne voulez vous ajouter un jeton ?\n");
+            scanf("%d",&c);
+            add_token(grille, c-1, jeton);
+            nb_jetons++;
+        }
+        show_grid(grille);
+
+    } else {
+
+        jeton = 'X';
+
+        printf("C'est au joueur 2 de jouer \n");
+
+        printf("Rentrer 0 si vous vouler ajouter un jeton et 1 si vous voulez retirer un jeton : \n");
+        scanf("%d", &choix);
+
+        if(choix == 1)
+        {
+            if(nb_jetons != 0){
+                printf("Dans quelle colonne voulez vous enlever un jeton ?\n");
+                scanf("%d",&c);
+                remove_token(grille, c-1, size+2);
+                nb_jetons--;
+            }
+            else{
+                printf("ERREUR, grille vide\n");
+            }
+        } else {
+            printf("Dans quelle colonne voulez vous ajouter un jeton ?\n");
+            scanf("%d",&c);
+            add_token(grille, c-1, jeton);
+            nb_jetons++;
+        }
+        show_grid(grille);
+    }
+
+} while(winner == -1 && nb_jetons != grille.largeur * grille.hauteur);
 
     return 0;
 }
