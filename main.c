@@ -7,8 +7,7 @@
 
 
 int main() {
-
-    // salut la team
+    
 
     Grid grille;
     int winner;
@@ -75,6 +74,7 @@ do{
             nb_jetons++;
         }
         show_grid(grille);
+        check_winner(grille,size);
 
     } else {
 
@@ -103,9 +103,10 @@ do{
             nb_jetons++;
         }
         show_grid(grille);
+        check_winner(grille,size);
     }
 
-} while(winner == -1 && nb_jetons != grille.largeur * grille.hauteur);
+} while(check_winner(grille,size) == -1 && nb_jetons < (grille.largeur * grille.hauteur));
 
     return 0;
 }
