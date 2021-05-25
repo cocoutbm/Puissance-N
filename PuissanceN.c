@@ -9,6 +9,9 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <string.h>
+#include <time.h>
+
+
 
 char demarrage(){
     char lettre;
@@ -309,26 +312,58 @@ void play(Grid grille, char jeton, int c, int size, int winner)
     }
 }
 
-//void IA(Grid grille, int winner, int size, char jetons)
-//{
-//    int c;
-//
-//    jetons = 'X';
-//
-//    while (winner = -1 && c < grille.largeur)
-//    {
-//        remove_token(grille, c, size +2);
-//        add_token(grille, c, jetons);
-//        check_winner(grille, size);
-//    }
-//
-//    jetons = 'O';
-//
-//    while (winner = -1 && c < grille.largeur)
-//    {
-//        remove_token(grille, c, size +2);
-//        add_token(grille, c, jetons);
-//        check_winner(grille, size);
-//    }
-//
-//}
+void ordinateur(Grid grille, int size, char jetons)
+{
+    int c;
+    int i = 0;
+    int j = 0;
+    int indice_c = 0;
+    int winner_ordi, winner_joueur;
+    int coup_perdant[20] = {0};
+    int coup_gagnant[20] = {0};
+
+    srand(time(0));
+
+    do
+    {
+        add_token(grille, c, 'X');
+        winner_ordi = check_winner(grille, size);
+
+        if(winner_ordi == 1){
+            coup_gagnant[i] = c;
+        } else {
+            do {
+                add_token(grille, indice_c, 'O');
+                winner_joueur = check_winner(grille, size);
+
+                if (winner_joueur == -1){
+                    remove_token(grille, indice_c-1, size+1);
+                } else if(winner_joueur == 0){
+                    coup_perdant[j] = indice_c;
+                }
+                indice_c++;
+            } while (winner_joueur != 0 && indice_c < grille.largeur);
+        }
+
+
+
+        c++;
+        i++;
+        j++;
+
+    } while(winner_ordi != 1 && c < grille.largeur);
+
+    if (c < grille.largeur){
+        do {
+            indice_c = rand() % 20;
+        } while (coup_gagnant[indice_c] == 0);
+        add_token(grille, indice_c, 'X');
+    } else {
+        do {
+            indice_c = rand() % 20;
+        } while (coup_perdant[indice_c] == 0);
+        add_token(grille, indice_c, 'X');
+    }
+
+
+}
