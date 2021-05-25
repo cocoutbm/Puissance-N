@@ -80,6 +80,8 @@ int check_winner(Grid grille, int alignement_gagnant);
  */
 void play(Grid grille, char jeton, int c, int size, int winner);
 
+
+
 void IA(Grid grille, int winner, int size, char jetons);
 
 

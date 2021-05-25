@@ -234,6 +234,7 @@ void play(Grid grille, char jeton, int c, int size, int winner)
 {
     int nb_jetons = 0;
     char choix;
+    int retrait;
 
     // Boucle qui fait jouer les joueurs chacun leur tour
     do{
@@ -263,19 +264,25 @@ void play(Grid grille, char jeton, int c, int size, int winner)
                     printf("Dans quelle colonne voulez vous retirer un jeton ?\n");
                     scanf("%d", &c);
                 } while (c <= 0 || c > grille.largeur);
-                remove_token(grille, c-1, size+1);
+                retrait = c;
+                remove_token(grille, retrait-1, size+1);
                 nb_jetons--;
             }
             else{
                 printf("ERREUR, grille vide\n");
             }
         } else if (choix == 'A'){
-            do {
+            printf("Dans quelle colonne voulez vous ajouter un jeton ?\n");
+            scanf("%d", &c);
+            while (c <= 0 || c > grille.largeur || c == retrait){
+                printf("Vous ne pouver pas jouer dans cette colonne "
+                       "car le joueur precedent a retirer un jeton");
                 printf("Dans quelle colonne voulez vous ajouter un jeton ?\n");
                 scanf("%d", &c);
-            } while (c <= 0 || c > grille.largeur);
+            }
             add_token(grille, c-1, jeton);
             nb_jetons++;
+            retrait = 0;
         }
 
         show_grid(grille);
