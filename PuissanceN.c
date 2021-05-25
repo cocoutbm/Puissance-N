@@ -331,13 +331,14 @@ void ordinateur(Grid grille, int size, char jetons)
 
         if(winner_ordi == 1){
             coup_gagnant[i] = c;
+            remove_token(grille, c - 1, size+1);
         } else {
             do {
                 add_token(grille, indice_c, 'O');
                 winner_joueur = check_winner(grille, size);
 
                 if (winner_joueur == -1){
-                    remove_token(grille, indice_c-1, size+1);
+                    remove_token(grille, indice_c - 1, size+1);
                 } else if(winner_joueur == 0){
                     coup_perdant[j] = indice_c;
                 }
