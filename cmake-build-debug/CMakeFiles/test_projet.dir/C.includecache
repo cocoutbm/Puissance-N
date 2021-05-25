@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/coco/CLionProjects/test_projet/PuissanceN.c
+puissanceN.h
 C:/Users/coco/CLionProjects/test_projet/PuissanceN.h
-
-C:/Users/coco/CLionProjects/test_projet/main.c
 stdio.h
 -
 math.h
@@ -17,8 +17,10 @@ stdlib.h
 -
 ctype.h
 -
+stdbool.h
+-
 string.h
 -
-PuissanceN.h
+
 C:/Users/coco/CLionProjects/test_projet/PuissanceN.h
 

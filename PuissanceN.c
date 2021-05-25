@@ -250,11 +250,19 @@ void play(Grid grille, char jeton, int c, int size, int winner)
         }
 
         // Demande à l'utilisateur le choix qu'il souhaite faire
-        do {
-            printf("Rentrer A si vous vouler ajouter un jeton et R si vous voulez retirer un jeton : \n");
-            scanf(" %c", &choix);
-            choix = toupper(choix);
-        } while (choix != 'A' && choix != 'R');
+        if(nb_jetons < 2){
+            do {
+                printf("Rentrer A si vous vouler ajouter un jeton : \n");
+                scanf(" %c", &choix);
+                choix = toupper(choix);
+            } while (choix != 'A');
+        } else {
+            do {
+                printf("Rentrer A si vous vouler ajouter un jeton et R si vous voulez retirer un jeton : \n");
+                scanf(" %c", &choix);
+                choix = toupper(choix);
+            } while (choix != 'A' && choix != 'R');
+        }
 
         // En fonction du choix fait, lancer la bonne fonction (add_token ou remove_token)
         if(choix == 'R')
