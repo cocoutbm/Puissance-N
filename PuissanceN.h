@@ -1,6 +1,7 @@
 //
 // Created by coco on 06/05/2021.
 //
+#include "stdio.h"
 
 #ifndef TEST_PROJET_PUISSANCEN_H
 #define TEST_PROJET_PUISSANCEN_H
@@ -78,9 +79,14 @@ int check_winner(Grid grille, int alignement_gagnant);
  * @param size
  * @param winner le gagnant
  */
-void play(Grid grille, char jeton, int c, int size, int winner);
+void play(Grid grille, char jeton, int c, int size, int winner, int nb_jetons);
 
-void ordinateur(Grid grille, int size, char jetons);
+
+void save (Grid grille, int nb_jetons);
+
+void charger_partie(FILE *fichier, Grid grille);
+
+void IA(Grid grille, int winner, int size, char jetons);
 
 
 
