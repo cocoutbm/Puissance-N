@@ -25,7 +25,7 @@ char demarrage();
  * demande a l'utilisateur le type d'adversaire
  * @return 0 ou 1 en fonction de l'adversaire (ordinateur ou joueur 2)
  */
-int demarrage_nouvelle_partie();
+int demarrage_nouvelle_partie(char *prenom1, char *prenom2);
 
 
 /**
@@ -79,7 +79,7 @@ int check_winner(Grid grille, int alignement_gagnant);
  * @param size
  * @param winner le gagnant
  */
-void play(Grid grille, char jeton, int c, int size, int winner, int nb_jetons);
+void play(Grid grille, char jeton, int c, int size, int winner, int nb_jetons, char prenom1[], char prenom2[]);
 
 
 void save (Grid grille, int nb_jetons);
@@ -88,6 +88,6 @@ void charger_partie(FILE *fichier, Grid grille);
 
 void IA(Grid grille, int winner, int size, char jetons);
 
-
+void nom();
 
 #endif //TEST_PROJET_PUISSANCEN_H
