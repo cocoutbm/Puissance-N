@@ -2,7 +2,7 @@
 // Created by coco on 06/05/2021.
 //
 
-#include "puissanceN.h"
+#include "puissance N.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -12,6 +12,121 @@
 #include <time.h>
 
 
+void play(Grid grille, char jeton, int c, int size, int winner, int nb_jetons)
+{
+    char choix;
+    int retrait;
+
+    // Boucle qui fait jouer les joueurs chacun leur tour
+    do{
+        // Connaître le joueur qui doit jouer
+        // Quand nb_jetons est pair alors c'est au joueur 1 de jouer
+        // Quand nb_jetons est impair alors c'est au joueur 2 de jouer
+        if(nb_jetons % 2 == 0) {
+            jeton = 'O';
+            printf("C'est au joueur 1 de jouer \n");
+        } else {
+            jeton = 'X';
+            printf("C'est au joueur 2 de jouer \n");
+        }
+
+        // Demande à l'utilisateur le choix qu'il souhaite faire
+        if(nb_jetons < 2){
+            do {
+                printf("Rentrer A si vous vouler ajouter un jeton ou Q si vous voulez quitter: \n");
+                scanf(" %c", &choix);
+                choix = toupper(choix);
+            } while (choix != 'A' && choix != 'Q');
+        } else {
+            do {
+                printf("Rentrer A si vous vouler ajouter un jeton et R si vous voulez retirer un jeton ou Q si\n "
+                       "vous voulez quitter et sauvegarder : \n");
+                scanf(" %c", &choix);
+                choix = toupper(choix);
+            } while (choix != 'A' && choix != 'R' && choix != 'Q');
+        }
+
+        // En fonction du choix fait, lancer la bonne fonction (add_token ou remove_token)
+        if(choix == 'R')
+        {
+            if(nb_jetons != 0){
+                do {
+                    printf("Dans quelle colonne voulez vous retirer un jeton ?\n");
+                    scanf("%d", &c);
+                } while (c <= 0 || c > grille.largeur);
+                retrait = c;
+                remove_token(grille, retrait-1, size+1);
+                nb_jetons--;
+            }
+            else{
+                printf("ERREUR, grille vide\n");
+            }
+        } else if (choix == 'A'){
+            printf("Dans quelle colonne voulez vous ajouter un jeton ?\n");
+            scanf("%d", &c);
+            while (c <= 0 || c > grille.largeur || c == retrait){
+                printf("Vous ne pouver pas jouer dans cette colonne "
+                       "car le joueur precedent a retirer un jeton");
+                printf("Dans quelle colonne voulez vous ajouter un jeton ?\n");
+                scanf("%d", &c);
+            }
+            add_token(grille, c-1, jeton);
+            nb_jetons++;
+            retrait = 0;
+        }
+
+        show_grid(grille);
+        winner = check_winner(grille,size);
+
+        printf("\n");
+
+    } while(winner == -1 && nb_jetons < (grille.largeur * grille.hauteur) && choix != 'Q');
+
+    if(choix == 'Q'){
+        save(grille, nb_jetons);
+    }
+
+    if (winner == 0){
+        printf("Le joueur 1 a gagne");
+    } else if (winner == 1) {
+        printf("Le joueur 2 a gagne");
+    } else {
+        printf("Match nul");
+    }
+}
+
+
+
+void save (Grid grille, int nb_jetons){
+    int l = 0 , h = 0;
+    int size = grille.hauteur*grille.largeur;
+    FILE* fichier = fopen("fichier.txt", "w");
+    if(fichier != NULL){
+        fprintf(fichier, "%d\n",nb_jetons);
+        fprintf(fichier, "%d\n",grille.hauteur);
+        for(l=0;l<grille.largeur;l++){
+            for(h=0;h<grille.hauteur;h++){
+                fprintf(fichier, "%c\n",grille.tableau[l][h]);
+            }
+        }
+    }
+    fclose(fichier);
+}
+
+
+void charger_partie(FILE*fichier, Grid grille){
+    char ligne[100];
+    int l, h, taille;
+    int size = grille.hauteur * grille.largeur;
+
+
+    for(l=0;l<grille.largeur;l++){
+        for(h=0;h<grille.hauteur;h++){
+            fgets(&grille.tableau[l][h], 10,fichier);
+        }
+
+    }
+}
 
 char demarrage(){
     char lettre;
@@ -233,84 +348,6 @@ int check_winner(Grid grille, int alignement_gagant)
     return gagnant;
 }
 
-void play(Grid grille, char jeton, int c, int size, int winner)
-{
-    int nb_jetons = 0;
-    char choix;
-    int retrait;
-
-    // Boucle qui fait jouer les joueurs chacun leur tour
-    do{
-        // Connaître le joueur qui doit jouer
-        // Quand nb_jetons est pair alors c'est au joueur 1 de jouer
-        // Quand nb_jetons est impair alors c'est au joueur 2 de jouer
-        if(nb_jetons % 2 == 0) {
-            jeton = 'O';
-            printf("C'est au joueur 1 de jouer \n");
-        } else {
-            jeton = 'X';
-            printf("C'est au joueur 2 de jouer \n");
-        }
-
-        // Demande à l'utilisateur le choix qu'il souhaite faire
-        if(nb_jetons < 2){
-            do {
-                printf("Rentrer A si vous vouler ajouter un jeton : \n");
-                scanf(" %c", &choix);
-                choix = toupper(choix);
-            } while (choix != 'A');
-        } else {
-            do {
-                printf("Rentrer A si vous vouler ajouter un jeton et R si vous voulez retirer un jeton : \n");
-                scanf(" %c", &choix);
-                choix = toupper(choix);
-            } while (choix != 'A' && choix != 'R');
-        }
-
-        // En fonction du choix fait, lancer la bonne fonction (add_token ou remove_token)
-        if(choix == 'R')
-        {
-            if(nb_jetons != 0){
-                do {
-                    printf("Dans quelle colonne voulez vous retirer un jeton ?\n");
-                    scanf("%d", &c);
-                } while (c <= 0 || c > grille.largeur);
-                retrait = c;
-                remove_token(grille, retrait-1, size+1);
-                nb_jetons--;
-            }
-            else{
-                printf("ERREUR, grille vide\n");
-            }
-        } else if (choix == 'A'){
-            printf("Dans quelle colonne voulez vous ajouter un jeton ?\n");
-            scanf("%d", &c);
-            while (c <= 0 || c > grille.largeur || c == retrait){
-                printf("Vous ne pouver pas jouer dans cette colonne "
-                       "car le joueur precedent a retirer un jeton");
-                printf("Dans quelle colonne voulez vous ajouter un jeton ?\n");
-                scanf("%d", &c);
-            }
-            add_token(grille, c-1, jeton);
-            nb_jetons++;
-            retrait = 0;
-        }
-
-        show_grid(grille);
-        winner = check_winner(grille,size);
-
-        printf("\n");
-
-    } while(winner == -1 && nb_jetons < (grille.largeur * grille.hauteur));
-
-    if (winner == 0){
-        printf("Le joeur 1 a gagne");
-    } else if (winner == 1) {
-        printf("Le joeur 2 a gagne");
-    } else {
-        printf("Match nul");
-    }
-}
 
 void ordinateur(Grid grille, int size, char jetons)
 {
@@ -331,14 +368,13 @@ void ordinateur(Grid grille, int size, char jetons)
 
         if(winner_ordi == 1){
             coup_gagnant[i] = c;
-            remove_token(grille, c - 1, size+1);
         } else {
             do {
                 add_token(grille, indice_c, 'O');
                 winner_joueur = check_winner(grille, size);
 
                 if (winner_joueur == -1){
-                    remove_token(grille, indice_c - 1, size+1);
+                    remove_token(grille, indice_c-1, size+1);
                 } else if(winner_joueur == 0){
                     coup_perdant[j] = indice_c;
                 }
