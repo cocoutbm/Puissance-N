@@ -59,6 +59,7 @@ int main() {
             show_grid(grille);
             play(grille, jeton, c, size, winner,nb_jetons);
             break;
+        case 'Q': printf("\n=============FIN DU JEU============= \n\n");
     }
 
 
