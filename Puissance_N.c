@@ -353,7 +353,7 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
         if (player == 0){
             printf("=== Le joueur 2 a gagne ===");
         } else {
-            printf("§§§ L'ordinateur a gagne ===");
+            printf("=== L'ordinateur a gagne ===");
         }
     } else {
         printf("=== Match nul ===");
