@@ -41,15 +41,15 @@ int demarrage_nouvelle_partie(char prenom1[], char prenom2[]){
         scanf("%d",&adversaire);
     }while(adversaire != 0 && adversaire != 1);
     if (adversaire == 0){
-        printf("Quel est le nom du premier joueur 1 ?\n");
+        printf("*   Quel est le nom du premier joueur 1 ?\n");
         fflush(stdin);
         gets(prenom1);
         printf("\n");
-        printf("Quel est le nom du premier joueur 2 ?\n");
+        printf("*   Quel est le nom du premier joueur 2 ?\n");
         fflush(stdin);
         gets(prenom2);
         printf("\n");
-        printf("%s a les jetons O et %s a les jetons X\n", prenom1, prenom2);
+        printf("    %s a les jetons O et %s a les jetons X\n\n", prenom1, prenom2);
     }
     else{
         printf("Quel est le nom du premier joueur 1 ?\n");
@@ -291,13 +291,13 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
             // Demande à l'utilisateur le choix qu'il souhaite faire
             if(nb_jetons < 2){
                 do {
-                    printf("-   Rentrer A si vous vouler ajouter un jeton ou Q si vous voulez quitter: \n");
+                    printf("    -   Rentrer A si vous vouler ajouter un jeton ou Q si vous voulez quitter: \n");
                     scanf(" %c", &choix);
                     choix = toupper(choix);
                 } while (choix != 'A' && choix != 'Q');
             } else {
                 do {
-                    printf("-   Rentrer A si vous vouler ajouter un jeton et R si vous voulez retirer un jeton ou Q si\n"
+                    printf("    -   Rentrer A si vous vouler ajouter un jeton et R si vous voulez retirer un jeton ou Q si\n"
                            "vous voulez quitter et sauvegarder : \n");
                     scanf(" %c", &choix);
                     choix = toupper(choix);
@@ -309,7 +309,7 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
             {
                 if(nb_jetons != 0){
                     do {
-                        printf("/   Dans quelle colonne voulez vous retirer un jeton ?\n");
+                        printf("        /   Dans quelle colonne voulez vous retirer un jeton ?\n");
                         scanf("%d", &c);
                     } while (c <= 0 || c > grille.largeur);
                     retrait = c;
@@ -317,17 +317,17 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
                     nb_jetons--;
                 }
                 else{
-                    printf(".   ERREUR, grille vide\n");
+                    printf("    .   ERREUR, grille vide\n");
                 }
             } else if (choix == 'A'){
                 do {
-                    printf("/   Dans quelle colonne voulez vous ajouter un jeton ?\n");
+                    printf("        /   Dans quelle colonne voulez vous ajouter un jeton ?\n");
                     scanf("%d", &c);
                 } while (c <= 0 || c > grille.largeur);
                 while (c == retrait){
-                    printf(".   Vous ne pouver pas jouer dans cette colonne "
+                    printf("    .   Vous ne pouver pas jouer dans cette colonne "
                            "car le joueur precedent a retirer un jeton \n");
-                    printf("/   Dans quelle colonne voulez vous ajouter un jeton ?\n");
+                    printf("        /   Dans quelle colonne voulez vous ajouter un jeton ?\n");
                     scanf("%d", &c);
                 }
                 add_token(grille, c-1, jeton, false);
@@ -348,15 +348,15 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
     }
 
     if (winner == 0){
-        printf("§§§ Le joueur 1 a gagne §§§");
+        printf("=== Le joueur 1 a gagne ===");
     } else if (winner == 1) {
         if (player == 0){
-            printf("§§§ Le joueur 2 a gagne §§§");
+            printf("=== Le joueur 2 a gagne ===");
         } else {
-            printf("§§§ L'ordinateur a gagne §§§");
+            printf("§§§ L'ordinateur a gagne ===");
         }
     } else {
-        printf("§§§ Match nul §§§");
+        printf("=== Match nul ===");
     }
 }
 
