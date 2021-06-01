@@ -289,7 +289,10 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
     int winner;
     bool ordi;
     char choix;
+<<<<<<< HEAD
     char choix_ordi;
+=======
+>>>>>>> origin/projet
 
 
     // Boucle qui fait jouer les joueurs chacun leur tour
@@ -383,7 +386,11 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
 
     } while(winner == -1 && nb_jetons < (grille.largeur * grille.hauteur) && choix != 'Q' && choix_ordi != 'Q');
 
+<<<<<<< HEAD
     if(choix == 'Q' || choix_ordi == 'Q'){
+=======
+    if(choix == 'Q'){
+>>>>>>> origin/projet
         save(grille, nb_jetons, prenom1, prenom2,player,retrait);
     }
 
