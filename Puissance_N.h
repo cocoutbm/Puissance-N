@@ -12,6 +12,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <time.h>
+#include "windows.h"
 
 /**
  * Caractérise la grille
@@ -128,5 +129,7 @@ void save (Grid grille, int nb_jetons, char prenom1[], char prenom2[]);
  * @param grille la grille
  */
 void charger_partie(FILE *fichier, Grid grille);
+
+void Color(int couleurDuTexte,int couleurDeFond);
 
 #endif //IFB_PROJET_PUISSANCE_N_H
