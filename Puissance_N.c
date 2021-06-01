@@ -496,6 +496,7 @@ int computer_remove(Grid grille, int size) {
     int retrait = -1;
     int winner_joueur;
 
+
     do {
         winner_joueur = 0;
         if (remove_token(grille, c_ordi, true) == 1) {
@@ -571,12 +572,17 @@ int saisie_int() {
     char saisie[10];
     bool is_integer = false;
 
+    // mise en chaine de caractères de ma saisie
     scanf("%s", saisie);
     fflush(stdin);
+
+    // Vérifie si mon caractère est compris entre '0' et '9'
     while (saisie[i] != '\0' && saisie[i] >= '0' && saisie[i] <= '9') {
         i++;
         is_integer = true;
     }
+    // Si le caractère est un entier alors on le convertit en entier
+    // Sinon on retourne -2
     if (saisie[i] == '\0' && is_integer == true) {
         entier = atoi(saisie);
     } else {
@@ -584,4 +590,27 @@ int saisie_int() {
     }
 
     return entier;
+}
+
+void ouverture_fichier(Grid grille, char prenom1[], char prenom2[], char ligne[], int player, int retrait, int nb_jetons, int size){
+    FILE* fichier = fopen("fichier.txt", "r");
+    if(fichier != NULL) {
+        fgets(prenom1, 100, fichier);
+        fgets(prenom2, 100, fichier);
+        fgets(ligne, 100, fichier);
+        player =atoi(ligne);
+        fgets(ligne, 100, fichier);
+        retrait =atoi(ligne);
+        fgets(ligne, 100, fichier);
+        nb_jetons =atoi(ligne);
+        fgets(ligne, 100, fichier);
+        size = atoi(ligne);
+
+        init_grid(&grille, size);
+
+        init_grid(&grille, size);
+
+        charger_partie(fichier,grille);
+    }
+    fclose(fichier);
 }

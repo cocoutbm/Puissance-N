@@ -138,5 +138,7 @@ void Color(int couleurDuTexte,int couleurDeFond);
 
 int saisie_int();
 
+void ouverture_fichier(Grid grille, char prenom1[], char prenom2[], char ligne[], int player, int retrait, int nb_jetons, int size);
+
 #endif //IFB_PROJET_PUISSANCE_N_H
 
