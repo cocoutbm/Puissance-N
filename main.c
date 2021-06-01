@@ -84,13 +84,13 @@ int main() {
 
                 init_grid(&grille, size);
 
-                init_grid(&grille, size-2);
+                init_grid(&grille, size);
 
                 charger_partie(fichier,grille);
             }
             fclose(fichier);
-            printf("\n");
             show_grid(grille);
+            printf("\n\n");
             play(grille, jeton, player, prenom1, prenom2, c, size, nb_jetons, retrait);
             break;
         case 'Q': printf("\n=============FIN DE LA PARTIE============= \n");

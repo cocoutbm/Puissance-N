@@ -35,30 +35,48 @@ char demarrage(){
 
 int demarrage_nouvelle_partie(char prenom1[], char prenom2[]){
     int adversaire;
+    char jeton1 = 'O';
+    char jeton2 = 'X';
 
     // contrôle sans message d'erreur de l'entrée du joueur
     do{
         printf("*   Jouer a deux => Rentrer 0 : \n*   Jouer contre l'ordinateur => Rentrer 1 : \n");
-        scanf("%d",&adversaire);
-        fflush(stdin);
+        adversaire = saisie_int();
     }while(adversaire != 0 && adversaire != 1);
-    if (adversaire == 0){
+    if (adversaire == 0){   // adversaire == 1
+        // Demande du nom du premier joueur
         printf("*   Quel est le nom du premier joueur 1 ?\n");
         fflush(stdin);
         gets(prenom1);
         printf("\n");
+        // Demande du nom du deuxième joueur
         printf("*   Quel est le nom du premier joueur 2 ?\n");
         fflush(stdin);
         gets(prenom2);
         printf("\n");
-        printf("    %s a les jetons O et %s a les jetons X\n\n", prenom1, prenom2);
+        printf("    %s a les jetons", prenom1);
+        Color(14,0);
+        printf(" %c ", jeton1);
+        Color(15,0);
+        printf("et %s a les jetons ", prenom2);
+        Color(4,0);
+        printf(" %c \n\n", jeton2);
+        Color(15,0);
         fflush(stdin);
     }
-    else{
-        printf("Quel est le nom du premier joueur 1 ?\n");
+    else{   // adversaire == 1
+        // Demande du nom du joueur
+        printf("Quel est le nom du joueur 1 ?\n");
         fflush(stdin);
         gets(prenom1);
-        printf("%s a les jetons O et l'ordinateur a les jetons X \n\n",prenom1);
+        printf("    %s a les jetons", prenom1);
+        Color(14,0);
+        printf(" %c ", jeton1);
+        Color(15,0);
+        printf("et l'ordinateur a les jetons ");
+        Color(4,0);
+        printf(" %c \n\n", jeton2);
+        Color(15,0);
     }
     return (adversaire);
 }
@@ -67,13 +85,14 @@ int demarrage_nouvelle_partie(char prenom1[], char prenom2[]){
 int taille(){
     int alignement_gagnant = 0;
 
+    // Contrôle si la saisie de l'alignement gagnant est bien comprise entre 3 et 8
     do {
         printf("*   Quel nombre de jetons voulez vous aligner pour gagner ?\n");
         printf("*   Rentrer un nombre entre 3 et 8 ?\n");
-        scanf("%d", &alignement_gagnant);
-        fflush(stdin);
+        alignement_gagnant = saisie_int();
     } while (alignement_gagnant < 3 || alignement_gagnant > 8);
 
+    // Affichage de la taille de la grille
     printf("\n  la taille du tableau est donc de %d par %d\n\n",alignement_gagnant + 2,alignement_gagnant + 2);
     return alignement_gagnant;
 }
@@ -105,22 +124,22 @@ void show_grid(Grid grille)
     // Affichage de la grille initialisée
     for(l = grille.hauteur - 1; l >= 0; l--){
         for(c = 0; c < grille.hauteur; c++){
+            // Passe les jetons 'O' en jaune
             if (grille.tableau[l][c] == 'O'){
                 Color(14,0);
                 printf("%c  ",grille.tableau[l][c]);
                 Color(15,0);
             }
+            // Passe les jetons 'X' en rouge
             else if(grille.tableau[l][c] == 'X'){
                 Color(4,0);
                 printf("%c  ",grille.tableau[l][c]);
                 Color(15,0);
             }
+            // Les jetons '_' restent blanc
             else if (grille.tableau[l][c] == '_'){
-                Color(15,0);
                 printf("%c  ",grille.tableau[l][c]);
-                Color(15,0);
             }
-
         }
         printf("\n");
     }
@@ -165,6 +184,7 @@ int remove_token(Grid grille, int c, bool test_ordi)
     }
     else{
         suppression = 0;
+        // Ne pas afficher le message quand l'ordi fait un test
         if (test_ordi == false) {
             printf("ERREUR, colonne vide \n");
         }
@@ -291,21 +311,23 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
     char choix;
     char choix_ordi;
 
+
     // Boucle qui fait jouer les joueurs chacun leur tour
     do {
         // Connaître le joueur qui doit jouer
         // Quand nb_jetons est pair alors c'est au joueur 1 de jouer
-        // Quand nb_jetons est impair alors c'est au joueur 2 de jouer
+        // Quand nb_jetons est impair alors c'est au joueur 2 de jouer si player == 0 ou à l'ordi quand player == 1
         if (nb_jetons % 2 == 0) {
             ordi = false;
             jeton = 'O';
-            printf("+   C'est a %s de jouer \n", prenom1);
+            printf("+   C'est a %s de jouer\n", prenom1);
         } else if (nb_jetons % 2 != 0) {
             if (player == 0) {
                 ordi = false;
                 jeton = 'X';
-                printf("+   C'est a %s de jouer \n", prenom2);
+                printf("+   C'est a %s de jouer\n", prenom2);
             } else {
+                // Faire jouer l'ordi ou quitter la partie + contrôle
                 do {
                     printf("Rentrer O pour faire jouer l'ordinateur ou Q pour quitter: \n");
                     scanf(" %c", &choix_ordi);
@@ -346,8 +368,7 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
                 if(nb_jetons != 0){
                     do {
                         printf("        /   Dans quelle colonne voulez vous retirer un jeton ?\n");
-                        scanf("%d", &c);
-                        fflush(stdin);
+                        c = saisie_int();
                     } while (c <= 0 || c > grille.largeur);
                     retrait = c;
                     remove_token(grille, c - 1, false);
@@ -357,18 +378,16 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
                     printf("    .   ERREUR, grille vide\n");
                 }
             } else if (choix == 'A'){
+                // vérifie que la saisie de la colonne est bien valide (un entier compris entre ]0, grille.hauteur]
                 do {
                     printf("        /   Dans quelle colonne voulez vous ajouter un jeton ?\n");
-                    scanf("%d", &c);
-                    fflush(stdin);
-                } while (c <= 0 || c > grille.largeur);
-                while (c == retrait){
-                    printf("    .   Vous ne pouver pas jouer dans cette colonne "
-                           "car le joueur precedent a retirer un jeton \n");
-                    printf("        /   Dans quelle colonne voulez vous ajouter un jeton ?\n");
-                    scanf("%d", &c);
-                    fflush(stdin);
-                }
+                    c = saisie_int();
+                    if (c == retrait){
+                        printf(".   Vous ne pouver pas jouer dans cette colonne "
+                               "car le joueur precedent a retirer un jeton \n");
+                    }
+                } while (c == retrait || c <= 0 || c > grille.largeur);
+
                 add_token(grille, c-1, jeton, false);
                 nb_jetons++;
                 retrait = -1;
@@ -388,12 +407,18 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
     }
 
     if (winner == 0){
+        Color(14, 0);
         printf("=== Le joueur 1 a gagne ===");
+        Color(15, 0);
     } else if (winner == 1) {
         if (player == 0){
+            Color(4, 0);
             printf("=== Le joueur 2 a gagne ===");
+            Color(15, 0);
         } else {
+            Color(4, 0);
             printf("=== L'ordinateur a gagne ===");
+            Color(15, 0);
         }
     } else {
         printf("=== Match nul ===");
@@ -537,4 +562,26 @@ void Color(int couleurDuTexte,int couleurDeFond) // fonction d'affichage de coul
 {
     HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
+}
+
+int saisie_int() {
+
+    int i = 0;
+    int entier = -1;
+    char saisie[10];
+    bool is_integer = false;
+
+    scanf("%s", saisie);
+    fflush(stdin);
+    while (saisie[i] != '\0' && saisie[i] >= '0' && saisie[i] <= '9') {
+        i++;
+        is_integer = true;
+    }
+    if (saisie[i] == '\0' && is_integer == true) {
+        entier = atoi(saisie);
+    } else {
+        entier = -2;
+    }
+
+    return entier;
 }

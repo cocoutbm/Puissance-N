@@ -136,5 +136,7 @@ void charger_partie(FILE *fichier, Grid grille);
  */
 void Color(int couleurDuTexte,int couleurDeFond);
 
+int saisie_int();
+
 #endif //IFB_PROJET_PUISSANCE_N_H
 
