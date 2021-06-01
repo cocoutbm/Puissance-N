@@ -277,7 +277,7 @@ int check_winner(Grid grille, int alignement_gagant)
 void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], int c, int size, int nb_jetons)
 {
     int winner;
-    bool ordi;
+    bool ordi = false;
     char choix;
     int retrait = -1;
 
