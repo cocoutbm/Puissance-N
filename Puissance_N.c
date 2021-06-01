@@ -194,6 +194,7 @@ int check_winner(Grid grille, int alignement_gagant)
                     alignement_en_cours = true;
                     jetons_alignes++;
                     indice_c++;
+
                 } else {
                     jetons_alignes = 1;
                     alignement_en_cours = false;
@@ -212,6 +213,7 @@ int check_winner(Grid grille, int alignement_gagant)
                         indice_c++;
                         indice_l++;
                         alignement_en_cours = true;
+
                     } else {
                         jetons_alignes = 1;
                         alignement_en_cours = false;
@@ -229,6 +231,7 @@ int check_winner(Grid grille, int alignement_gagant)
                         indice_l++;
                         jetons_alignes++;
                         alignement_en_cours = true;
+
                     } else {
                         jetons_alignes = 1;
                         alignement_en_cours = false;
@@ -247,6 +250,7 @@ int check_winner(Grid grille, int alignement_gagant)
                         indice_c--;
                         jetons_alignes++;
                         alignement_en_cours = true;
+
                     } else {
                         jetons_alignes = 1;
                         alignement_en_cours = false;
@@ -262,6 +266,7 @@ int check_winner(Grid grille, int alignement_gagant)
 
     } while (jetons_alignes != alignement_gagant && c < grille.largeur); // Fin de parcours des colognes
 
+
     // Annonce du gagnant
     if(jetons_alignes == alignement_gagant && grille.tableau[l - 1][c - 1] == 'O'){
         gagnant = 0;
@@ -274,12 +279,12 @@ int check_winner(Grid grille, int alignement_gagant)
     return gagnant;
 }
 
-void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], int c, int size, int nb_jetons)
+void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], int c, int size, int nb_jetons, int retrait)
 {
     int winner;
-    bool ordi = false;
+    bool ordi;
     char choix;
-    int retrait = -1;
+
 
     // Boucle qui fait jouer les joueurs chacun leur tour
     do {
@@ -361,7 +366,7 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
     } while(winner == -1 && nb_jetons < (grille.largeur * grille.hauteur) && choix != 'Q');
 
     if(choix == 'Q'){
-        save(grille, nb_jetons, prenom1, prenom2);
+        save(grille, nb_jetons, prenom1, prenom2,player,retrait);
     }
 
     if (winner == 0){
@@ -475,13 +480,15 @@ int computer_remove(Grid grille, int size) {
 }
 
 
-void save (Grid grille, int nb_jetons, char prenom1[], char prenom2[]){
+void save (Grid grille, int nb_jetons, char prenom1[], char prenom2[],int player, int retrait){
     int l = 0 , h = 0;
     int size = grille.hauteur*grille.largeur;
     FILE* fichier = fopen("fichier.txt", "w");
     if(fichier != NULL){
         fprintf(fichier, "%s\n", prenom1);
         fprintf(fichier, "%s\n", prenom2);
+        fprintf(fichier, "%d\n", player);
+        fprintf(fichier, "%d\n", retrait);
         fprintf(fichier, "%d\n",nb_jetons);
         fprintf(fichier, "%d\n",grille.hauteur);
         for(l=0;l<grille.largeur;l++){
