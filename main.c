@@ -82,7 +82,7 @@ int main() {
             fclose(fichier);
             printf("\n");
             show_grid(grille);
-            play(grille, jeton, player, prenom1, prenom2, c, size, 0);
+            play(grille, jeton, player, prenom1, prenom2, c, size, nb_jetons);
             break;
         case 'Q': printf("\n=============FIN DE LA PARTIE============= \n");
             break;
