@@ -8,6 +8,7 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <time.h>
+#include "windows.h"
 
 char demarrage(){
     char lettre;
@@ -39,6 +40,7 @@ int demarrage_nouvelle_partie(char prenom1[], char prenom2[]){
     do{
         printf("*   Jouer a deux => Rentrer 0 : \n*   Jouer contre l'ordinateur => Rentrer 1 : \n");
         scanf("%d",&adversaire);
+        fflush(stdin);
     }while(adversaire != 0 && adversaire != 1);
     if (adversaire == 0){
         printf("*   Quel est le nom du premier joueur 1 ?\n");
@@ -50,22 +52,27 @@ int demarrage_nouvelle_partie(char prenom1[], char prenom2[]){
         gets(prenom2);
         printf("\n");
         printf("    %s a les jetons O et %s a les jetons X\n\n", prenom1, prenom2);
+        fflush(stdin);
     }
     else{
         printf("Quel est le nom du premier joueur 1 ?\n");
         fflush(stdin);
         gets(prenom1);
-        printf("%s a les jetons O et l'ordinateur a les jetons X \n\n");
+        printf("%s a les jetons O et l'ordinateur a les jetons X \n\n",prenom1);
     }
     return (adversaire);
 }
 
 
 int taille(){
-    int alignement_gagnant;
+    int alignement_gagnant = 0;
 
-    printf("*   Quel nombre de jetons voulez vous aligner pour gagner ?\n");
-    scanf("%d",&alignement_gagnant);
+    do {
+        printf("*   Quel nombre de jetons voulez vous aligner pour gagner ?\n");
+        printf("*   Rentrer un nombre entre 3 et 8 ?\n");
+        scanf("%d", &alignement_gagnant);
+        fflush(stdin);
+    } while (alignement_gagnant < 3 || alignement_gagnant > 8);
 
     printf("\n  la taille du tableau est donc de %d par %d\n\n",alignement_gagnant + 2,alignement_gagnant + 2);
     return alignement_gagnant;
@@ -98,7 +105,22 @@ void show_grid(Grid grille)
     // Affichage de la grille initialisée
     for(l = grille.hauteur - 1; l >= 0; l--){
         for(c = 0; c < grille.hauteur; c++){
-            printf("%c  ",grille.tableau[l][c]);
+            if (grille.tableau[l][c] == 'O'){
+                Color(14,0);
+                printf("%c  ",grille.tableau[l][c]);
+                Color(15,0);
+            }
+            else if(grille.tableau[l][c] == 'X'){
+                Color(4,0);
+                printf("%c  ",grille.tableau[l][c]);
+                Color(15,0);
+            }
+            else if (grille.tableau[l][c] == '_'){
+                Color(15,0);
+                printf("%c  ",grille.tableau[l][c]);
+                Color(15,0);
+            }
+
         }
         printf("\n");
     }
@@ -177,6 +199,7 @@ int check_winner(Grid grille, int alignement_gagant)
                     alignement_en_cours = true;
                     jetons_alignes++;
                     indice_c++;
+
                 } else {
                     jetons_alignes = 1;
                     alignement_en_cours = false;
@@ -195,6 +218,7 @@ int check_winner(Grid grille, int alignement_gagant)
                         indice_c++;
                         indice_l++;
                         alignement_en_cours = true;
+
                     } else {
                         jetons_alignes = 1;
                         alignement_en_cours = false;
@@ -212,6 +236,7 @@ int check_winner(Grid grille, int alignement_gagant)
                         indice_l++;
                         jetons_alignes++;
                         alignement_en_cours = true;
+
                     } else {
                         jetons_alignes = 1;
                         alignement_en_cours = false;
@@ -230,6 +255,7 @@ int check_winner(Grid grille, int alignement_gagant)
                         indice_c--;
                         jetons_alignes++;
                         alignement_en_cours = true;
+
                     } else {
                         jetons_alignes = 1;
                         alignement_en_cours = false;
@@ -245,6 +271,7 @@ int check_winner(Grid grille, int alignement_gagant)
 
     } while (jetons_alignes != alignement_gagant && c < grille.largeur); // Fin de parcours des colognes
 
+
     // Annonce du gagnant
     if(jetons_alignes == alignement_gagant && grille.tableau[l - 1][c - 1] == 'O'){
         gagnant = 0;
@@ -257,12 +284,13 @@ int check_winner(Grid grille, int alignement_gagant)
     return gagnant;
 }
 
-void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], int c, int size, int nb_jetons)
+void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], int c, int size, int nb_jetons, int retrait)
 {
     int winner;
     bool ordi;
     char choix;
-    int retrait = -1;
+    char choix_ordi;
+
 
     // Boucle qui fait jouer les joueurs chacun leur tour
     do {
@@ -279,10 +307,19 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
                 jeton = 'X';
                 printf("+   C'est a %s de jouer \n", prenom2);
             } else {
-                printf("+   C'est a l'ordinateur de jouer \n");
-                retrait = computer(grille, size, retrait);
+                do {
+                    printf("Rentrer O pour faire jouer l'ordinateur ou Q pour quitter: \n");
+                    scanf(" %c", &choix_ordi);
+                    choix_ordi = toupper(choix_ordi);
+                } while (choix_ordi != 'O' && choix_ordi != 'Q');
+
                 ordi = true;
-                nb_jetons++;
+                if (choix_ordi == 'O') {
+                    printf("+   C'est a l'ordinateur de jouer \n");
+                    retrait = computer(grille, size, retrait);
+                    nb_jetons++;
+                }
+
             }
         }
 
@@ -311,6 +348,7 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
                     do {
                         printf("        /   Dans quelle colonne voulez vous retirer un jeton ?\n");
                         scanf("%d", &c);
+                        fflush(stdin);
                     } while (c <= 0 || c > grille.largeur);
                     retrait = c;
                     remove_token(grille, c - 1, false);
@@ -323,12 +361,14 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
                 do {
                     printf("        /   Dans quelle colonne voulez vous ajouter un jeton ?\n");
                     scanf("%d", &c);
+                    fflush(stdin);
                 } while (c <= 0 || c > grille.largeur);
                 while (c == retrait){
                     printf("    .   Vous ne pouver pas jouer dans cette colonne "
                            "car le joueur precedent a retirer un jeton \n");
                     printf("        /   Dans quelle colonne voulez vous ajouter un jeton ?\n");
                     scanf("%d", &c);
+                    fflush(stdin);
                 }
                 add_token(grille, c-1, jeton, false);
                 nb_jetons++;
@@ -341,10 +381,10 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
 
         printf("\n");
 
-    } while(winner == -1 && nb_jetons < (grille.largeur * grille.hauteur) && choix != 'Q');
+    } while(winner == -1 && nb_jetons < (grille.largeur * grille.hauteur) && choix != 'Q' && choix_ordi != 'Q');
 
-    if(choix == 'Q'){
-        save(grille, nb_jetons, prenom1, prenom2);
+    if(choix == 'Q' || choix_ordi == 'Q'){
+        save(grille, nb_jetons, prenom1, prenom2,player,retrait);
     }
 
     if (winner == 0){
@@ -353,7 +393,7 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
         if (player == 0){
             printf("=== Le joueur 2 a gagne ===");
         } else {
-            printf("§§§ L'ordinateur a gagne ===");
+            printf("=== L'ordinateur a gagne ===");
         }
     } else {
         printf("=== Match nul ===");
@@ -458,15 +498,17 @@ int computer_remove(Grid grille, int size) {
 }
 
 
-void save (Grid grille, int nb_jetons, char prenom1[], char prenom2[]){
+void save (Grid grille, int nb_jetons, char prenom1[], char prenom2[],int player, int retrait){
     int l = 0 , h = 0;
     int size = grille.hauteur*grille.largeur;
     FILE* fichier = fopen("fichier.txt", "w");
     if(fichier != NULL){
         fprintf(fichier, "%s\n", prenom1);
         fprintf(fichier, "%s\n", prenom2);
+        fprintf(fichier, "%d\n", player);
+        fprintf(fichier, "%d\n", retrait);
         fprintf(fichier, "%d\n",nb_jetons);
-        fprintf(fichier, "%d\n",grille.hauteur);
+        fprintf(fichier, "%d\n",grille.hauteur - 2);
         for(l=0;l<grille.largeur;l++){
             for(h=0;h<grille.hauteur;h++){
                 fprintf(fichier, "%c\n",grille.tableau[l][h]);
@@ -488,4 +530,11 @@ void charger_partie(FILE *fichier, Grid grille) {
             fgets(&grille.tableau[l][h], 10, fichier);
         }
     }
+}
+
+
+void Color(int couleurDuTexte,int couleurDeFond) // fonction d'affichage de couleurs
+{
+    HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
 }
