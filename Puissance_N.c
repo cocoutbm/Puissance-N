@@ -51,12 +51,13 @@ int demarrage_nouvelle_partie(char prenom1[], char prenom2[]){
         gets(prenom2);
         printf("\n");
         printf("    %s a les jetons O et %s a les jetons X\n\n", prenom1, prenom2);
+        fflush(stdin);
     }
     else{
         printf("Quel est le nom du premier joueur 1 ?\n");
         fflush(stdin);
         gets(prenom1);
-        printf("%s a les jetons O et l'ordinateur a les jetons X \n\n");
+        printf("%s a les jetons O et l'ordinateur a les jetons X \n\n",prenom1);
     }
     return (adversaire);
 }
@@ -505,7 +506,6 @@ void charger_partie(FILE *fichier, Grid grille) {
         }
     }
 }
-
 
 
 void Color(int couleurDuTexte,int couleurDeFond) // fonction d'affichage de couleurs
