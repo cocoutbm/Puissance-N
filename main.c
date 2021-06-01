@@ -9,7 +9,7 @@ int main() {
     Grid grille;
     int winner = 0;
     char start;
-    int player;
+    int player=0;
     char prenom1[100];
     char prenom2[100];
     int size;
@@ -17,6 +17,7 @@ int main() {
     int c = 0;
     char ligne[100]={0};
     int nb_jetons;
+    int retrait = -1;
 
 //    init_grid(&grille, 4);
 //    grille.tableau[0][3]='O';
@@ -64,25 +65,29 @@ int main() {
 
             printf("\n");
 
-            play(grille, jeton, player, prenom1, prenom2, c, size, 0);
+            play(grille, jeton, player, prenom1, prenom2, c, size, 0, retrait);
             break;
         case 'C': printf("\n=============PARTIE EN COURS============= \n\n");
 
             FILE* fichier = fopen("fichier.txt", "r");
-            fgets(prenom1, 100, fichier);
-            fgets(prenom2, 100, fichier);
-            fgets(ligne, 100, fichier);
-            nb_jetons =atof(ligne);
-            fgets(ligne, 100, fichier);
-            size = atoi(ligne);
-            init_grid(&grille, size-2);
             if(fichier != NULL) {
+                fgets(prenom1, 100, fichier);
+                fgets(prenom2, 100, fichier);
+                fgets(ligne, 100, fichier);
+                player =atoi(ligne);
+                fgets(ligne, 100, fichier);
+                retrait =atoi(ligne);
+                fgets(ligne, 100, fichier);
+                nb_jetons =atoi(ligne);
+                fgets(ligne, 100, fichier);
+                size = atoi(ligne);
+                init_grid(&grille, size-2);
                 charger_partie(fichier,grille);
             }
             fclose(fichier);
             printf("\n");
             show_grid(grille);
-            play(grille, jeton, player, prenom1, prenom2, c, size, nb_jetons);
+            play(grille, jeton, player, prenom1, prenom2, c, size, nb_jetons, retrait);
             break;
         case 'Q': printf("\n=============FIN DE LA PARTIE============= \n");
             break;
