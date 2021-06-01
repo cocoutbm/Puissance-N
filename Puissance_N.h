@@ -83,7 +83,7 @@ int remove_token(Grid grille, int c, bool test_ordi);
  * @param alignement_gagnant
  * @return 0 si joueur1 gagne, 1 si joueur2 gagne, -1 si aucun n'a gagné
  */
-int check_winner(Grid grille, int alignement_gagnant);
+int check_winner(Grid grille, int alignement_gagant);
 
 /**
  * Faire jouer les joueurs chacun leur tour
@@ -96,7 +96,7 @@ int check_winner(Grid grille, int alignement_gagnant);
  * @param size l'alignement gagnant
  * @param winner le gagnant
  */
-void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], int c, int size, int nb_jetons);
+void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], int c, int size, int nb_jetons, int retrait);
 
 /**
  * Faire jouer l'ordinateur
@@ -121,7 +121,7 @@ int computer_remove(Grid grille, int size);
  * @param prenom1 le premier prénom
  * @param prenom2 le deuxième prénom
  */
-void save (Grid grille, int nb_jetons, char prenom1[], char prenom2[]);
+void save (Grid grille, int nb_jetons, char prenom1[], char prenom2[],int player, int retrait);
 
 /**
  * Charge la partie enregistrée
@@ -132,7 +132,7 @@ void charger_partie(FILE *fichier, Grid grille);
 
 /**
  * permet la mis en couleur des caractères du tableau
- * @param couleurDuTexte la couleur du texte 
+ * @param couleurDuTexte la couleur du texte
  * @param couleurDeFond  la couleur du fond
  */
 void Color(int couleurDuTexte,int couleurDeFond);
