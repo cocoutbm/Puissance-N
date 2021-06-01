@@ -8,6 +8,7 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <time.h>
+#include "windows.h"
 
 char demarrage(){
     char lettre;
@@ -98,7 +99,22 @@ void show_grid(Grid grille)
     // Affichage de la grille initialisée
     for(l = grille.hauteur - 1; l >= 0; l--){
         for(c = 0; c < grille.hauteur; c++){
-            printf("%c  ",grille.tableau[l][c]);
+            if (grille.tableau[l][c] == 'O'){
+                Color(14,0);
+                printf("%c  ",grille.tableau[l][c]);
+                Color(15,0);
+            }
+            else if(grille.tableau[l][c] == 'X'){
+                Color(4,0);
+                printf("%c  ",grille.tableau[l][c]);
+                Color(15,0);
+            }
+            else if (grille.tableau[l][c] == '_'){
+                Color(15,0);
+                printf("%c  ",grille.tableau[l][c]);
+                Color(15,0);
+            }
+
         }
         printf("\n");
     }
@@ -488,4 +504,12 @@ void charger_partie(FILE *fichier, Grid grille) {
             fgets(&grille.tableau[l][h], 10, fichier);
         }
     }
+}
+
+
+
+void Color(int couleurDuTexte,int couleurDeFond) // fonction d'affichage de couleurs
+{
+    HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
 }
