@@ -81,11 +81,11 @@ int main() {
                 nb_jetons =atoi(ligne);
                 fgets(ligne, 100, fichier);
                 size = atoi(ligne);
-<<<<<<< HEAD
+
                 init_grid(&grille, size);
-=======
+
                 init_grid(&grille, size-2);
->>>>>>> origin/projet
+
                 charger_partie(fichier,grille);
             }
             fclose(fichier);
