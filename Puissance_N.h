@@ -130,6 +130,11 @@ void save (Grid grille, int nb_jetons, char prenom1[], char prenom2[]);
  */
 void charger_partie(FILE *fichier, Grid grille);
 
+/**
+ * permet la mis en couleur des caractères du tableau
+ * @param couleurDuTexte la couleur du texte 
+ * @param couleurDeFond  la couleur du fond
+ */
 void Color(int couleurDuTexte,int couleurDeFond);
 
 #endif //IFB_PROJET_PUISSANCE_N_H
