@@ -142,32 +142,140 @@ ifb_projet/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/build
 .PHONY : ifb_projet/fast
 
-Puissance_N.obj: Puissance_N.c.obj
+Demarrage_partie.obj: Demarrage_partie.c.obj
 
-.PHONY : Puissance_N.obj
+.PHONY : Demarrage_partie.obj
 
 # target to build an object file
-Puissance_N.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/Puissance_N.c.obj
-.PHONY : Puissance_N.c.obj
+Demarrage_partie.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/Demarrage_partie.c.obj
+.PHONY : Demarrage_partie.c.obj
 
-Puissance_N.i: Puissance_N.c.i
+Demarrage_partie.i: Demarrage_partie.c.i
 
-.PHONY : Puissance_N.i
+.PHONY : Demarrage_partie.i
 
 # target to preprocess a source file
-Puissance_N.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/Puissance_N.c.i
-.PHONY : Puissance_N.c.i
+Demarrage_partie.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/Demarrage_partie.c.i
+.PHONY : Demarrage_partie.c.i
 
-Puissance_N.s: Puissance_N.c.s
+Demarrage_partie.s: Demarrage_partie.c.s
 
-.PHONY : Puissance_N.s
+.PHONY : Demarrage_partie.s
 
 # target to generate assembly for a file
-Puissance_N.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/Puissance_N.c.s
-.PHONY : Puissance_N.c.s
+Demarrage_partie.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/Demarrage_partie.c.s
+.PHONY : Demarrage_partie.c.s
+
+Grille.obj: Grille.c.obj
+
+.PHONY : Grille.obj
+
+# target to build an object file
+Grille.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/Grille.c.obj
+.PHONY : Grille.c.obj
+
+Grille.i: Grille.c.i
+
+.PHONY : Grille.i
+
+# target to preprocess a source file
+Grille.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/Grille.c.i
+.PHONY : Grille.c.i
+
+Grille.s: Grille.c.s
+
+.PHONY : Grille.s
+
+# target to generate assembly for a file
+Grille.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/Grille.c.s
+.PHONY : Grille.c.s
+
+IA.obj: IA.c.obj
+
+.PHONY : IA.obj
+
+# target to build an object file
+IA.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/IA.c.obj
+.PHONY : IA.c.obj
+
+IA.i: IA.c.i
+
+.PHONY : IA.i
+
+# target to preprocess a source file
+IA.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/IA.c.i
+.PHONY : IA.c.i
+
+IA.s: IA.c.s
+
+.PHONY : IA.s
+
+# target to generate assembly for a file
+IA.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/IA.c.s
+.PHONY : IA.c.s
+
+Jouer.obj: Jouer.c.obj
+
+.PHONY : Jouer.obj
+
+# target to build an object file
+Jouer.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/Jouer.c.obj
+.PHONY : Jouer.c.obj
+
+Jouer.i: Jouer.c.i
+
+.PHONY : Jouer.i
+
+# target to preprocess a source file
+Jouer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/Jouer.c.i
+.PHONY : Jouer.c.i
+
+Jouer.s: Jouer.c.s
+
+.PHONY : Jouer.s
+
+# target to generate assembly for a file
+Jouer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make CMakeFiles/ifb_projet.dir/Jouer.c.s
+.PHONY : Jouer.c.s
+
+Sauvegarde&chargement.obj: Sauvegarde&chargement.c.obj
+
+.PHONY : Sauvegarde&chargement.obj
+
+# target to build an object file
+Sauvegarde&chargement.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make "CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.obj"
+.PHONY : Sauvegarde&chargement.c.obj
+
+Sauvegarde&chargement.i: Sauvegarde&chargement.c.i
+
+.PHONY : Sauvegarde&chargement.i
+
+# target to preprocess a source file
+Sauvegarde&chargement.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make "CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.i"
+.PHONY : Sauvegarde&chargement.c.i
+
+Sauvegarde&chargement.s: Sauvegarde&chargement.c.s
+
+.PHONY : Sauvegarde&chargement.s
+
+# target to generate assembly for a file
+Sauvegarde&chargement.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ifb_projet.dir\build.make "CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.s"
+.PHONY : Sauvegarde&chargement.c.s
 
 main.obj: main.c.obj
 
@@ -205,9 +313,21 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... ifb_projet
-	@echo ... Puissance_N.obj
-	@echo ... Puissance_N.i
-	@echo ... Puissance_N.s
+	@echo ... Demarrage_partie.obj
+	@echo ... Demarrage_partie.i
+	@echo ... Demarrage_partie.s
+	@echo ... Grille.obj
+	@echo ... Grille.i
+	@echo ... Grille.s
+	@echo ... IA.obj
+	@echo ... IA.i
+	@echo ... IA.s
+	@echo ... Jouer.obj
+	@echo ... Jouer.i
+	@echo ... Jouer.s
+	@echo ... Sauvegarde&chargement.obj
+	@echo ... Sauvegarde&chargement.i
+	@echo ... Sauvegarde&chargement.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

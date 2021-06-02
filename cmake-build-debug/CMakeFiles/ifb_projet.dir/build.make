@@ -89,34 +89,94 @@ CMakeFiles/ifb_projet.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ifb_projet.dir/main.c.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\coco\CLionProjects\ifb_projet\main.c -o CMakeFiles\ifb_projet.dir\main.c.s
 
-CMakeFiles/ifb_projet.dir/Puissance_N.c.obj: CMakeFiles/ifb_projet.dir/flags.make
-CMakeFiles/ifb_projet.dir/Puissance_N.c.obj: ../Puissance_N.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\coco\CLionProjects\ifb_projet\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ifb_projet.dir/Puissance_N.c.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ifb_projet.dir\Puissance_N.c.obj   -c C:\Users\coco\CLionProjects\ifb_projet\Puissance_N.c
+CMakeFiles/ifb_projet.dir/Jouer.c.obj: CMakeFiles/ifb_projet.dir/flags.make
+CMakeFiles/ifb_projet.dir/Jouer.c.obj: ../Jouer.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\coco\CLionProjects\ifb_projet\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ifb_projet.dir/Jouer.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ifb_projet.dir\Jouer.c.obj   -c C:\Users\coco\CLionProjects\ifb_projet\Jouer.c
 
-CMakeFiles/ifb_projet.dir/Puissance_N.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ifb_projet.dir/Puissance_N.c.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\coco\CLionProjects\ifb_projet\Puissance_N.c > CMakeFiles\ifb_projet.dir\Puissance_N.c.i
+CMakeFiles/ifb_projet.dir/Jouer.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ifb_projet.dir/Jouer.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\coco\CLionProjects\ifb_projet\Jouer.c > CMakeFiles\ifb_projet.dir\Jouer.c.i
 
-CMakeFiles/ifb_projet.dir/Puissance_N.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ifb_projet.dir/Puissance_N.c.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\coco\CLionProjects\ifb_projet\Puissance_N.c -o CMakeFiles\ifb_projet.dir\Puissance_N.c.s
+CMakeFiles/ifb_projet.dir/Jouer.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ifb_projet.dir/Jouer.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\coco\CLionProjects\ifb_projet\Jouer.c -o CMakeFiles\ifb_projet.dir\Jouer.c.s
+
+CMakeFiles/ifb_projet.dir/Demarrage_partie.c.obj: CMakeFiles/ifb_projet.dir/flags.make
+CMakeFiles/ifb_projet.dir/Demarrage_partie.c.obj: ../Demarrage_partie.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\coco\CLionProjects\ifb_projet\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ifb_projet.dir/Demarrage_partie.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ifb_projet.dir\Demarrage_partie.c.obj   -c C:\Users\coco\CLionProjects\ifb_projet\Demarrage_partie.c
+
+CMakeFiles/ifb_projet.dir/Demarrage_partie.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ifb_projet.dir/Demarrage_partie.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\coco\CLionProjects\ifb_projet\Demarrage_partie.c > CMakeFiles\ifb_projet.dir\Demarrage_partie.c.i
+
+CMakeFiles/ifb_projet.dir/Demarrage_partie.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ifb_projet.dir/Demarrage_partie.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\coco\CLionProjects\ifb_projet\Demarrage_partie.c -o CMakeFiles\ifb_projet.dir\Demarrage_partie.c.s
+
+CMakeFiles/ifb_projet.dir/IA.c.obj: CMakeFiles/ifb_projet.dir/flags.make
+CMakeFiles/ifb_projet.dir/IA.c.obj: ../IA.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\coco\CLionProjects\ifb_projet\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ifb_projet.dir/IA.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ifb_projet.dir\IA.c.obj   -c C:\Users\coco\CLionProjects\ifb_projet\IA.c
+
+CMakeFiles/ifb_projet.dir/IA.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ifb_projet.dir/IA.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\coco\CLionProjects\ifb_projet\IA.c > CMakeFiles\ifb_projet.dir\IA.c.i
+
+CMakeFiles/ifb_projet.dir/IA.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ifb_projet.dir/IA.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\coco\CLionProjects\ifb_projet\IA.c -o CMakeFiles\ifb_projet.dir\IA.c.s
+
+CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.obj: CMakeFiles/ifb_projet.dir/flags.make
+CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.obj: ../Sauvegarde&chargement.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\coco\CLionProjects\ifb_projet\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o "CMakeFiles\ifb_projet.dir\Sauvegarde&chargement.c.obj"   -c "C:\Users\coco\CLionProjects\ifb_projet\Sauvegarde&chargement.c"
+
+CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\coco\CLionProjects\ifb_projet\Sauvegarde&chargement.c" > "CMakeFiles\ifb_projet.dir\Sauvegarde&chargement.c.i"
+
+CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\coco\CLionProjects\ifb_projet\Sauvegarde&chargement.c" -o "CMakeFiles\ifb_projet.dir\Sauvegarde&chargement.c.s"
+
+CMakeFiles/ifb_projet.dir/Grille.c.obj: CMakeFiles/ifb_projet.dir/flags.make
+CMakeFiles/ifb_projet.dir/Grille.c.obj: ../Grille.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\coco\CLionProjects\ifb_projet\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/ifb_projet.dir/Grille.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ifb_projet.dir\Grille.c.obj   -c C:\Users\coco\CLionProjects\ifb_projet\Grille.c
+
+CMakeFiles/ifb_projet.dir/Grille.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ifb_projet.dir/Grille.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\coco\CLionProjects\ifb_projet\Grille.c > CMakeFiles\ifb_projet.dir\Grille.c.i
+
+CMakeFiles/ifb_projet.dir/Grille.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ifb_projet.dir/Grille.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\coco\CLionProjects\ifb_projet\Grille.c -o CMakeFiles\ifb_projet.dir\Grille.c.s
 
 # Object files for target ifb_projet
 ifb_projet_OBJECTS = \
 "CMakeFiles/ifb_projet.dir/main.c.obj" \
-"CMakeFiles/ifb_projet.dir/Puissance_N.c.obj"
+"CMakeFiles/ifb_projet.dir/Jouer.c.obj" \
+"CMakeFiles/ifb_projet.dir/Demarrage_partie.c.obj" \
+"CMakeFiles/ifb_projet.dir/IA.c.obj" \
+"CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.obj" \
+"CMakeFiles/ifb_projet.dir/Grille.c.obj"
 
 # External object files for target ifb_projet
 ifb_projet_EXTERNAL_OBJECTS =
 
 ifb_projet.exe: CMakeFiles/ifb_projet.dir/main.c.obj
-ifb_projet.exe: CMakeFiles/ifb_projet.dir/Puissance_N.c.obj
+ifb_projet.exe: CMakeFiles/ifb_projet.dir/Jouer.c.obj
+ifb_projet.exe: CMakeFiles/ifb_projet.dir/Demarrage_partie.c.obj
+ifb_projet.exe: CMakeFiles/ifb_projet.dir/IA.c.obj
+ifb_projet.exe: CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.obj
+ifb_projet.exe: CMakeFiles/ifb_projet.dir/Grille.c.obj
 ifb_projet.exe: CMakeFiles/ifb_projet.dir/build.make
 ifb_projet.exe: CMakeFiles/ifb_projet.dir/linklibs.rsp
 ifb_projet.exe: CMakeFiles/ifb_projet.dir/objects1.rsp
 ifb_projet.exe: CMakeFiles/ifb_projet.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\coco\CLionProjects\ifb_projet\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable ifb_projet.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\coco\CLionProjects\ifb_projet\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable ifb_projet.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\ifb_projet.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -4,7 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/coco/CLionProjects/ifb_projet/Puissance_N.c" "C:/Users/coco/CLionProjects/ifb_projet/cmake-build-debug/CMakeFiles/ifb_projet.dir/Puissance_N.c.obj"
+  "C:/Users/coco/CLionProjects/ifb_projet/Demarrage_partie.c" "C:/Users/coco/CLionProjects/ifb_projet/cmake-build-debug/CMakeFiles/ifb_projet.dir/Demarrage_partie.c.obj"
+  "C:/Users/coco/CLionProjects/ifb_projet/Grille.c" "C:/Users/coco/CLionProjects/ifb_projet/cmake-build-debug/CMakeFiles/ifb_projet.dir/Grille.c.obj"
+  "C:/Users/coco/CLionProjects/ifb_projet/IA.c" "C:/Users/coco/CLionProjects/ifb_projet/cmake-build-debug/CMakeFiles/ifb_projet.dir/IA.c.obj"
+  "C:/Users/coco/CLionProjects/ifb_projet/Jouer.c" "C:/Users/coco/CLionProjects/ifb_projet/cmake-build-debug/CMakeFiles/ifb_projet.dir/Jouer.c.obj"
+  "C:/Users/coco/CLionProjects/ifb_projet/Sauvegarde&chargement.c" "C:/Users/coco/CLionProjects/ifb_projet/cmake-build-debug/CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.obj"
   "C:/Users/coco/CLionProjects/ifb_projet/main.c" "C:/Users/coco/CLionProjects/ifb_projet/cmake-build-debug/CMakeFiles/ifb_projet.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

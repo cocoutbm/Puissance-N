@@ -1,5 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ifb_projet.dir/Puissance_N.c.obj"
+  "CMakeFiles/ifb_projet.dir/Demarrage_partie.c.obj"
+  "CMakeFiles/ifb_projet.dir/Grille.c.obj"
+  "CMakeFiles/ifb_projet.dir/IA.c.obj"
+  "CMakeFiles/ifb_projet.dir/Jouer.c.obj"
+  "CMakeFiles/ifb_projet.dir/Sauvegarde&chargement.c.obj"
   "CMakeFiles/ifb_projet.dir/main.c.obj"
   "ifb_projet.exe"
   "ifb_projet.exe.manifest"

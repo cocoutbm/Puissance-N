@@ -74,10 +74,34 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/Puissance_N.c">
+		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/Demarrage_partie.c">
 			<Option target="ifb_projet"/>
 		</Unit>
-		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/Puissance_N.h">
+		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/Demarrage_partie.h">
+			<Option target="ifb_projet"/>
+		</Unit>
+		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/Grille.c">
+			<Option target="ifb_projet"/>
+		</Unit>
+		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/Grille.h">
+			<Option target="ifb_projet"/>
+		</Unit>
+		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/IA.c">
+			<Option target="ifb_projet"/>
+		</Unit>
+		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/IA.h">
+			<Option target="ifb_projet"/>
+		</Unit>
+		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/Jouer.c">
+			<Option target="ifb_projet"/>
+		</Unit>
+		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/Jouer.h">
+			<Option target="ifb_projet"/>
+		</Unit>
+		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/Sauvegarde&amp;chargement.c">
+			<Option target="ifb_projet"/>
+		</Unit>
+		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/Sauvegarde&amp;chargement.h">
 			<Option target="ifb_projet"/>
 		</Unit>
 		<Unit filename="C:/Users/coco/CLionProjects/ifb_projet/main.c">
