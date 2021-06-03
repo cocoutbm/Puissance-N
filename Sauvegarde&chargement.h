@@ -14,18 +14,6 @@
  */
 void charger_partie(FILE *fichier, Grid grille);
 
-/**
- * Ouvrir le fichier et écrire dedans la partie sauvegardée
- * @param grille la grille
- * @param prenom1 le prénom du premier joueur
- * @param prenom2 le prénom du deuxième joueur
- * @param ligne
- * @param player le type d'adversaire ('0' => 1 vs 1 et '1' => 1 vs ordinateur)
- * @param retrait l'indice de la colonne de retrait
- * @param nb_jetons le nombre de jetons jouées
- * @param size l'alignement gagnant
- */
-void ouverture_fichier(Grid grille, char prenom1[], char prenom2[], char ligne[], int player, int retrait, int nb_jetons, int size);
 
 /**
  * Faire jouer l'ordinateur
