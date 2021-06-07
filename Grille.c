@@ -30,26 +30,30 @@ void show_grid(Grid grille)
 {
     int l; // ligne
     int c; // colone
+    int couleurTexte;
 
     // Affichage de la grille initialisée
     for(l = grille.hauteur - 1; l >= 0; l--){
         for(c = 0; c < grille.hauteur; c++){
             // Passe les jetons 'O' en jaune
+            //printf("c_joue : %d %d", c, c_joue);
             if (grille.tableau[l][c] == 'O'){
-                Color(14,0);
-                printf("%c  ",grille.tableau[l][c]);
-                Color(15,0);
+                // Passe les jetons 'X' en jaune
+                couleurTexte = 14;
             }
-                // Passe les jetons 'X' en rouge
             else if(grille.tableau[l][c] == 'X'){
-                Color(4,0);
-                printf("%c  ",grille.tableau[l][c]);
-                Color(15,0);
+                // Passe les jetons 'X' en rouge
+                couleurTexte = 4;
             }
+            else {
                 // Les jetons '_' restent blanc
-            else if (grille.tableau[l][c] == '_'){
-                printf("%c  ",grille.tableau[l][c]);
+                couleurTexte=15;
             }
+
+            Color(couleurTexte,0);
+            printf("%c",grille.tableau[l][c]);
+            Color(15,0);
+            printf("  ");
         }
         printf("\n");
     }
