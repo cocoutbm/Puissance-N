@@ -179,7 +179,13 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
                 if (choix_ordi == 'O') {
                     printf("+   C'est a l'ordinateur de jouer \n");
                     retrait = computer(grille, size, retrait);
-                    nb_jetons++;
+                    if (retrait == -1) {
+                        // L'ordinateur a ajouté un jeton
+                        nb_jetons++;
+                    } else {
+                        // l'odinateur à retiré un jeton
+                        nb_jetons--;
+                    }
                 }
 
             }
@@ -206,14 +212,15 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
             // En fonction du choix fait, lancer la bonne fonction (add_token ou remove_token)
             if(choix == 'R')
             {
-                if(nb_jetons != 0){
+                if(nb_jetons != 0) {
                     do {
                         printf("        /   Dans quelle colonne voulez vous retirer un jeton ?\n");
                         c = saisie_int();
                     } while (c <= 0 || c > grille.largeur);
                     retrait = c;
-                    remove_token(grille, c - 1, false);
-                    nb_jetons--;
+                    if (remove_token(grille, c - 1, false)) {
+                        nb_jetons--;
+                    }
                 }
                 else{
                     printf("    .   ERREUR, grille vide\n");
@@ -229,9 +236,11 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
                     }
                 } while (c == retrait || c <= 0 || c > grille.largeur);
 
-                add_token(grille, c-1, jeton, false);
-                nb_jetons++;
-                retrait = -1;
+                if (add_token(grille, c-1, jeton, false)) {
+                    // On a pu ajouter un jeton, sinon on ne fait rien et on reboucle sur le joueur en cours
+                    nb_jetons++;
+                    retrait = -1;
+                }
             }
         }
 
