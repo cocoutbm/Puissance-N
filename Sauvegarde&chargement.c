@@ -3,12 +3,13 @@
 //
 
 #include "Sauvegarde&chargement.h"
-#include "Jouer.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 void charger_partie(FILE *fichier, Grid grille) {
-    int l, h;
+    char ligne[100];
+    int l, h, taille;
+    int size = grille.hauteur * grille.largeur;
+
 
     for (l = 0; l < grille.largeur; l++) {
         for (h = 0; h < grille.hauteur; h++) {
@@ -16,7 +17,6 @@ void charger_partie(FILE *fichier, Grid grille) {
         }
     }
 }
-
 
 void save (Grid grille, int nb_jetons, char prenom1[], char prenom2[],int player, int retrait){
     int l = 0 , h = 0;
