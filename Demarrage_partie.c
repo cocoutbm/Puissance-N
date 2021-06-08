@@ -44,9 +44,9 @@ int demarrage_nouvelle_partie(char prenom1[], char prenom2[]){
 
     // contrôle sans message d'erreur de l'entrée du joueur
     do{
-        printf("*   Jouer a deux => Rentrer 0 : \n*   Jouer contre l'ordinateur => Rentrer 1 : \n");
+        printf("*   Jouer a deux => Rentrer 0 : \n*   Jouer contre l'ordinateur en mode difficile => Rentrer 1 : \n*   Jouer contre l'ordianateur en mode facile => Rentrer 2 : \n");
         adversaire = saisie_int();
-    }while(adversaire != 0 && adversaire != 1);
+    }while(adversaire != 0 && adversaire != 1 && adversaire != 2);
     if (adversaire == 0){   // adversaire == 1
         // Demande du nom du premier joueur
         printf("*   Quel est le nom du premier joueur 1 ?\n");
@@ -58,26 +58,61 @@ int demarrage_nouvelle_partie(char prenom1[], char prenom2[]){
         fflush(stdin);
         gets(prenom2);
         printf("\n");
-        printf("    %s a les jetons", prenom1);
+        Color(14,0);
+        printf("    %s ", prenom1);
+        Color(15,0);
+        printf("a les jetons");
         Color(14,0);
         printf(" %c ", jeton1);
         Color(15,0);
-        printf("et %s a les jetons ", prenom2);
+        printf("et ");
+        Color(4,0);
+        printf("%s ", prenom2);
+        Color(15,0);
+        printf("a les jetons ");
         Color(4,0);
         printf(" %c \n\n", jeton2);
         Color(15,0);
         fflush(stdin);
     }
-    else{   // adversaire == 1
+    else if(adversaire == 1){   // adversaire == 1
         // Demande du nom du joueur
-        printf("Quel est le nom du joueur 1 ?\n");
+        printf("Quel est le nom du joueur ?\n");
         fflush(stdin);
         gets(prenom1);
-        printf("    %s a les jetons", prenom1);
+        Color(14,0);
+        printf("    %s ", prenom1);
+        Color(15,0);
+        printf("a les jetons");
         Color(14,0);
         printf(" %c ", jeton1);
         Color(15,0);
-        printf("et l'ordinateur a les jetons ");
+        printf("et ");
+        Color(4,0);
+        printf("l'ordinateur");
+        Color(15,0);
+        printf(" a les jetons");
+        Color(4,0);
+        printf(" %c \n\n", jeton2);
+        Color(15,0);
+    }
+    else if(adversaire == 2){   // adversaire == 1
+        // Demande du nom du joueur
+        printf("Quel est le nom du joueur ?\n");
+        fflush(stdin);
+        gets(prenom1);
+        Color(14,0);
+        printf("    %s ", prenom1);
+        Color(15,0);
+        printf("a les jetons");
+        Color(14,0);
+        printf(" %c ", jeton1);
+        Color(15,0);
+        printf("et ");
+        Color(4,0);
+        printf("l'ordinateur");
+        Color(15,0);
+        printf(" a les jetons");
         Color(4,0);
         printf(" %c \n\n", jeton2);
         Color(15,0);
