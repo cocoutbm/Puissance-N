@@ -2,7 +2,6 @@
 #include "Jouer.h"
 #include "Demarrage_partie.h"
 #include "Sauvegarde&chargement.h"
-#include "Grille.h"
 
 int main() {
 
@@ -38,7 +37,26 @@ int main() {
             break;
         case 'C': printf("\n=============PARTIE EN COURS============= \n\n");
             // Ouverture du fichier
-            ouverture_fichier(grille, prenom1, prenom2, ligne, player, retrait, nb_jetons, size);
+            FILE* fichier = fopen("fichier.txt", "r");
+            if(fichier != NULL) {
+                fgets(prenom1, 100, fichier);
+                fgets(prenom2, 100, fichier);
+                fgets(ligne, 100, fichier);
+                player =atoi(ligne);
+                fgets(ligne, 100, fichier);
+                retrait =atoi(ligne);
+                fgets(ligne, 100, fichier);
+                nb_jetons =atoi(ligne);
+                fgets(ligne, 100, fichier);
+                size = atoi(ligne);
+
+                init_grid(&grille, size);
+
+                init_grid(&grille, size);
+
+                charger_partie(fichier,grille);
+            }
+            fclose(fichier);
             show_grid(grille);
             printf("\n\n");
             play(grille, jeton, player, prenom1, prenom2, c, size, nb_jetons, retrait);
