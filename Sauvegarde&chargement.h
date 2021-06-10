@@ -12,7 +12,8 @@
  * @param fichier le fichier d'enregistrement
  * @param grille la grille
  */
-void charger_partie(FILE *fichier, Grid grille);
+void load(FILE *fichier, Grid *grille, char prenom1[100], char prenom2[100], int *player, int *retrait, int *nb_jetons, int *size);
+
 
 /**
  * Faire jouer l'ordinateur
@@ -20,6 +21,7 @@ void charger_partie(FILE *fichier, Grid grille);
  * @param size l'alignement gagnant
  * @param retrait le numéro de colonne où le joueur précédent à enlevé un jeton
  */
+
 void save (Grid grille, int nb_jetons, char prenom1[], char prenom2[],int player, int retrait);
 
 #endif //IFB_PROJET_SAUVEGARDE_CHARGEMENT_H
