@@ -3,8 +3,6 @@
 //
 
 #include "Sauvegarde&chargement.h"
-#include "Jouer.h"
-#include "Grille.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -12,7 +10,7 @@
 void load(FILE *fichier, Grid *grille, char prenom1[100], char prenom2[100], int *player, int *retrait, int *nb_jetons, int *size) {
     int l, h;
     char ligne[100]={0};
-     //Ouverture du fichier
+    //Ouverture du fichier
     fgets(prenom1, 100, fichier);
     fgets(prenom2, 100, fichier);
     fgets(ligne, 100, fichier);
@@ -36,7 +34,6 @@ void load(FILE *fichier, Grid *grille, char prenom1[100], char prenom2[100], int
 
 void save (Grid grille, int nb_jetons, char prenom1[], char prenom2[],int player, int retrait){
     int l = 0 , h = 0;
-    int size = grille.hauteur*grille.largeur;
     FILE* fichier = fopen("fichier.txt", "w");
     if(fichier != NULL){
         fprintf(fichier, "%s\n", prenom1);
