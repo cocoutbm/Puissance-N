@@ -47,7 +47,7 @@ int demarrage_nouvelle_partie(char prenom1[], char prenom2[]){
         printf("*   Jouer a deux => Rentrer 0 : \n*   Jouer contre l'ordinateur en mode difficile => Rentrer 1 : \n*   Jouer contre l'ordianateur en mode facile => Rentrer 2 : \n");
         adversaire = saisie_int();
     }while(adversaire != 0 && adversaire != 1 && adversaire != 2);
-    if (adversaire == 0){   // adversaire == 1
+    if (adversaire == 0){   // adversaire == 0
         // Demande du nom du premier joueur
         printf("*   Quel est le nom du premier joueur 1 ?\n");
         fflush(stdin);
@@ -96,7 +96,7 @@ int demarrage_nouvelle_partie(char prenom1[], char prenom2[]){
         printf(" %c \n\n", jeton2);
         Color(15,0);
     }
-    else if(adversaire == 2){   // adversaire == 1
+    else if(adversaire == 2){   // adversaire == 2
         // Demande du nom du joueur
         printf("Quel est le nom du joueur ?\n");
         fflush(stdin);
