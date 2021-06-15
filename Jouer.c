@@ -170,6 +170,7 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
     char choix;
     char choix_ordi;
     int c_ordi;
+    char jeton_sup;
 
 
     // Boucle qui fait jouer les joueurs chacun leur tour
@@ -268,10 +269,11 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
                         printf("        /   Dans quelle colonne voulez vous retirer un jeton ?\n");
                         c = saisie_int();
                     } while (c <= 0 || c > grille.largeur);
-                    retrait = c;
-                    if (remove_token(grille, c - 1, false)) {
+                    jeton_sup = remove_token(grille, c - 1, false);
+                    if (jeton_sup != 'N' ) {
                         // On a pu retirer un jeton, sinon on reboucle sur le joueur en cours
                         nb_jetons--;
+                        retrait = c;
                     }
                 }
                 else{
@@ -329,30 +331,30 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
     }
 }
 
-int remove_token(Grid grille, int c, bool test_ordi)
+char remove_token(Grid grille, int c, bool test_ordi)
 {
     int l = grille.hauteur -1; // j'ai modifié
-    int suppression = 0;
+    char jeton_sup;
 
     // boucle afin de trouver la premiere case pleine de la colonne
     while(l >= 0 && grille.tableau[l][c] == '_'){
         l--;
     }
     if(l >= 0){
-        // Il y a au moins une case de remplit donc on remplace la première case trouvée avec un jeton par une case vide
+        // Il y a au moins une case de remplie donc on remplace la première case trouvée avec un jeton par une case vide
+        jeton_sup = grille.tableau[l][c];
         grille.tableau[l][c] = '_';
-        suppression = 1;
     }
     else{
         // On a atteind le bas de la colonne et donc pas de jeton à supprimer
-        suppression = 0;
+        jeton_sup = 'N';
         if (test_ordi == false) {
             // Ce n'est pas l'ordi qui fait un test donc on peut afficher le message
             printf("ERREUR, colonne vide \n");
         }
     }
 
-    return suppression;  // 1 si on a pu supprimer un jeton, 0 sinon
+    return jeton_sup;  // 1 si on a pu supprimer un jeton, 0 sinon
 }
 
 int saisie_int() {
