@@ -2,41 +2,33 @@
 // Created by coco on 02/06/2021.
 //
 
-#ifndef IFB_PROJET_DEMARRAGE_PARTIE_H
-#define IFB_PROJET_DEMARRAGE_PARTIE_H
-
+#ifndef IFB_PROJET_SAUVEGARDE_CHARGEMENT_H
+#define IFB_PROJET_SAUVEGARDE_CHARGEMENT_H
 #include <stdio.h>
-#include <stdlib.h>
-#include "windows.h"
 #include "Grille.h"
 
 
 /**
- * permet la mis en couleur des caractères du tableau
- * @param couleurDuTexte la couleur du texte
- * @param couleurDeFond  la couleur du fond
+ * Supprime le caractère de retour (\n) à la fin dune chaine
+ * @param chaine La chaine a laquelle on doit supprimer le retour
  */
-void Color(int couleurDuTexte,int couleurDeFond);
-
-/**
- * aquisition de l'action de démarrage
- * @return une lettre correspondant à l'action choisis par l'utilisateur
- */
-char demarrage();
-
-/**
- * demande a l'utilisateur le type d'adversaire
- * @param prenom1 le premier prénom
- * @param prenom2 le deuxième prénom
- * @return 0 ou 1 en fonction de l'adversaire (ordinateur ou joueur 2)
- */
-int demarrage_nouvelle_partie(char prenom1[], char prenom2[]);
+void del_return(char* chaine);
 
 
 /**
- * demande le nombre de jetons alignés pour gagner
- * @return le nombre de jetons à alignés pour gagner
+ * Charge la partie enregistrée
+ * @param fichier le fichier d'enregistrement
+ * @param grille la grille
  */
-int taille();
+void load(FILE *fichier, Grid *grille, char prenom1[100], char prenom2[100], int *player, int *retrait, int *nb_jetons, int *size);
 
-#endif //IFB_PROJET_DEMARRAGE_PARTIE_H
+
+/**
+ * Faire jouer l'ordinateur
+ * @param grille la grille
+ * @param size l'alignement gagnant
+ * @param retrait le numéro de colonne où le joueur précédent à enlevé un jeton
+ */
+void save (Grid grille, int nb_jetons, char prenom1[], char prenom2[],int player, int retrait);
+
+#endif //IFB_PROJET_SAUVEGARDE_CHARGEMENT_H
