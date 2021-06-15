@@ -3,7 +3,6 @@
 #include "Jouer.h"
 #include "Demarrage_partie.h"
 #include "Sauvegarde&chargement.h"
-#include "Grille.h"
 
 int main() {
 
@@ -15,7 +14,6 @@ int main() {
     int size;
     char jeton = 0;
     int c = 0;
-    char ligne[100]={0};
     int nb_jetons;
     int retrait = -1;
 
@@ -41,12 +39,15 @@ int main() {
 
             FILE* fichier = fopen("fichier.txt", "r");
             if(fichier != NULL) {
-                load(fichier,&grille,prenom1,prenom2,&player,&retrait,&nb_jetons,&size);
-                }
-            fclose(fichier);
-            show_grid(grille);
-            printf("\n\n");
-            play(grille, jeton, player, prenom1, prenom2, c, size, nb_jetons,retrait);
+                load(fichier,&grille,prenom1,prenom2,&player,&retrait,&nb_jetons,&size); // Charge la partie sauvegardée
+                fclose(fichier);
+                show_grid(grille);
+                printf("\n\n");
+                play(grille, jeton, player, prenom1, prenom2, c, size, nb_jetons,retrait);
+            } else {
+                printf("Aucune partie sauvegardee");
+            }
+
             break;
         case 'Q': printf("\n=============FIN DE LA PARTIE============= \n");
             break;
