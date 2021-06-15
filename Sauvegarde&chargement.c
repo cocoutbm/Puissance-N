@@ -5,14 +5,31 @@
 #include "Sauvegarde&chargement.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
+
+void del_return(char* chaine)
+{
+    char *retour_ligne;
+
+    retour_ligne = strpbrk(chaine, "\n");
+    if(retour_ligne != NULL)
+    {
+        // Il y a bien un \n dans la chaine on remplace par un fin de chaine pour le supprimer
+        *retour_ligne = 0;
+    }
+}
 
 void load(FILE *fichier, Grid *grille, char prenom1[100], char prenom2[100], int *player, int *retrait, int *nb_jetons, int *size) {
     int l, h;
     char ligne[100]={0};
+    char *retour_ligne;
+
     //Ouverture du fichier
     fgets(prenom1, 100, fichier);
+    del_return(prenom1);    // Suppression du retour à la ligne (\n)
     fgets(prenom2, 100, fichier);
+    del_return(prenom2);    // Suppression du retour à la ligne (\n)
     fgets(ligne, 100, fichier);
     *player =atoi(ligne);
     fgets(ligne, 100, fichier);
