@@ -44,9 +44,9 @@ void play(Grid grille, char jeton, int player, char prenom1[], char prenom2[], i
  * @param grille
  * @param c la colonne choisie par le joueur
  * @param test_ordi savoir si l'ordinateur effectue un test
- * @return si la suppression est possible (return 1) ou non (return 0)
+ * @return le jeton supprimé ou N si on ne peut pas retirer de jeton
  */
-int remove_token(Grid grille, int c, bool test_ordi);
+char remove_token(Grid grille, int c, bool test_ordi);
 
 /**
  * Vérification de la saisie (si c'est un entier ou non)
